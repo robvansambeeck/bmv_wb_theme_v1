@@ -1,7 +1,7 @@
 <?php
 
 /*
-@package (theme_name)
+@package (bvm_wb_theme_v1)
 =========================
 REMOVE GENERATOR VERSION NUMBER
 =========================
