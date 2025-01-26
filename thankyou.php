@@ -8,7 +8,7 @@ The 404 Not Found template. Used when WordPress cannot find a post or page that 
 =========================
 */
 /*
-Template Name: Page Template - 404
+Template Name: Page Template - ThankYou
 Template Post Type: page
 */
 ?>

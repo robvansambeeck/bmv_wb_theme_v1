@@ -165,12 +165,6 @@ meter {
   transition: 0.5s ease-in-out;
 }
 
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 20px;
-}
-
 .card {
   padding: 20px;
   border: 1px solid #ddd;
@@ -507,6 +501,18 @@ legend {
   display: block;
 }
 
+.notification-wrapper {
+  display: grid;
+  align-items: center;
+  min-height: 70vh; /* Full viewport height for the wrapper */
+}
+
+.page-content {
+  flex: 1; /* This allows the content to stretch dynamically */
+  padding: 20px; /* Optional: Add padding for spacing */
+  box-sizing: border-box; /* Ensure padding doesn't affect the height */
+}
+
 .sec {
   margin-bottom: 2rem;
 }
@@ -591,6 +597,20 @@ main {
 .filter-button:hover {
   background-color: #0073e6;
   color: #fff;
+}
+
+#card-container {
+  padding: 30px 0;
+  margin-bottom: 4rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+  opacity: 1;
+  transition: opacity 0.5s ease-in-out; /* Smooth fade effect */
+}
+
+#card-container.hidden {
+  opacity: 0; /* Fade out effect */
 }
 
 body {

@@ -3,28 +3,6 @@
 
 // cards
 
-// card-generic
-// .card {
-//     overflow: hidden;
-//     .card-inner {
-//     text-decoration: none; /* Remove the underline */
-//     color: inherit; /* Make the link color same as the surrounding text */
-//     background-color: transparent; /* Remove any background color */
-//     cursor: pointer; /* Ensure it shows as a clickable item */
-//     border: none; /* Remove any borders */
-//     outline: none; /* Remove focus outline */
-//     padding: 0; /* Remove any padding */
-//     margin: 0; /* Remove any margin */
-//     }
-// }
-
-
-.grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 20px;
-}
-
 .card {
     padding: 20px;
     border: 1px solid #ddd;
@@ -33,6 +11,14 @@
     text-align: center;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease;
+    opacity: 0;
+    transform: translateY(20px); /* Start slightly below */
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.card.show {
+    opacity: 1;
+    transform: translateY(0); /* Move back into place */
 }
 
 .card:hover {

@@ -43,6 +43,7 @@ function create_custom_post_type()
         'menu_icon' => 'dashicons-megaphone', // Change the dashicon as needed
         'supports' => array('title', 'editor', 'thumbnail', 'excerpt', 'comments'),
         'taxonomies'         => array('category'), // Enable categories
+        'show_in_rest' => true, // Ensures REST API support
     );
 
     register_post_type('vacature', $args);
