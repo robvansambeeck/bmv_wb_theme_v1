@@ -296,6 +296,63 @@ legend {
   font-size: 30px; /* Size of the checkmark */
 }
 
+.nav-main {
+  position: sticky; /* Allows it to overlay the video section */
+  top: 0;
+  width: 100%;
+  background: rgba(250, 250, 250, 0.8); /* Semi-transparent background */
+  z-index: 5000;
+}
+.nav-main .sec-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.nav-main .sec-content .nav-logo a {
+  line-height: 90px;
+  display: flex;
+  align-items: center;
+}
+.nav-main .sec-content .nav-logo img {
+  margin: auto;
+  max-height: 65px;
+  width: 100%;
+}
+.nav-main .sec-content .nav-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  grid-gap: 2rem;
+}
+.nav-main .sec-content .nav-wrapper * {
+  line-height: 90px;
+}
+.nav-main .sec-content .nav-items ul {
+  display: flex;
+  justify-content: flex-end;
+  grid-gap: 30px;
+}
+.nav-main .sec-content .nav-items ul li {
+  list-style: none;
+}
+.nav-main .sec-content .nav-cta {
+  display: flex;
+  justify-content: space-around;
+  grid-gap: 1rem;
+}
+.nav-main .sec-content .nav-cta a {
+  width: 35px;
+  height: 35px;
+  background-color: rgb(245, 243, 240);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.nav-main .sec-content .nav-cta i {
+  line-height: 35px;
+}
+
 .container {
   max-width: 1400px;
   padding: 0 15px;
@@ -381,6 +438,96 @@ legend {
   margin-left: auto;
   margin-right: auto;
   display: block;
+}
+
+.sec {
+  margin-bottom: 2rem;
+}
+
+.sec-content {
+  padding: 0 15px;
+}
+
+.header {
+  margin-top: -90px;
+  height: 75vh;
+  background-color: red;
+}
+
+.video-header {
+  position: relative;
+  height: 75vh; /* Full viewport height */
+  overflow: hidden;
+}
+
+.header-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Ensure video fills the header area */
+  z-index: 1000;
+}
+
+.video-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5); /* Semi-transparent overlay for better text readability */
+  z-index: 2;
+}
+
+.header-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #fff;
+  text-align: center;
+  z-index: 3;
+}
+
+.header-content h1 {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+}
+
+.header-content p {
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+}
+
+/* Main Content Section */
+main {
+  padding: 20px;
+}
+
+#content {
+  background: #f4f4f4;
+  padding: 50px 20px;
+  min-height: 100vh;
+}
+
+.filter-buttons {
+  margin-bottom: 20px;
+  display: flex;
+  gap: 10px;
+}
+
+.filter-button {
+  padding: 10px 20px;
+  border: 1px solid #ccc;
+  background-color: #fff;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.filter-button:hover {
+  background-color: #0073e6;
+  color: #fff;
 }
 
 body {

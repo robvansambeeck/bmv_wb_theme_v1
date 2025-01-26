@@ -9,11 +9,6 @@ The front page template.
 */
 ?>
 <?php get_header(); ?>
-
-
-
-
-
-
-
+    <?php get_template_part('parts/header'); ?>
+    <?php get_template_part('parts/filter'); ?>
 <?php get_footer(); ?>

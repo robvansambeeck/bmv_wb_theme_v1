@@ -4,4 +4,94 @@
 @use "sass:math";
 
 
-//sections
+// generic
+.sec {
+    margin-bottom: $grid-gap;
+}
+.sec-content {
+    padding: 0 $padding-base;
+}
+
+//header
+.header {
+    margin-top: -90px;
+    height: 75vh;
+    background-color: red;
+}
+.video-header {
+    position: relative;
+    height: 75vh; /* Full viewport height */
+    overflow: hidden;
+}
+
+.header-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensure video fills the header area */
+    z-index: $z-cta;
+}
+
+.video-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Semi-transparent overlay for better text readability */
+    z-index: 2;
+}
+
+.header-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #fff;
+    text-align: center;
+    z-index: 3;
+}
+
+.header-content h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+}
+
+.header-content p {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+}
+
+/* Main Content Section */
+main {
+    padding: 20px;
+}
+
+#content {
+    background: #f4f4f4;
+    padding: 50px 20px;
+    min-height: 100vh;
+}
+
+
+// filter
+.filter-buttons {
+    margin-bottom: 20px;
+    display: flex;
+    gap: 10px;
+}
+
+.filter-button {
+    padding: 10px 20px;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.filter-button:hover {
+    background-color: #0073e6;
+    color: #fff;
+}
