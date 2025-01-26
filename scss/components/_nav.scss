@@ -63,3 +63,44 @@
         }
     }
 }
+
+// nav-footer
+
+.nav-footer {
+    padding: $padding-base*3 0;
+    background-color: $color-bg-dark;
+    margin-bottom: 0 !important;
+    .nav-items {
+        color: $color-txt-light;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-gap: $grid-gap;
+        .title-wrap {
+            display: inline-block;
+            padding-bottom: $padding-base;
+            h5 {
+                font-size: 1rem;
+            }
+            hr {
+                background-color: $color-bg-light;
+                width: 75%;
+                height: 2px;
+                margin-top: $padding-base*0.75;
+            }
+        }
+        li {
+            list-style-type: none;
+        }
+        a {
+            color: $color-txt-light;
+        }
+    }
+    .nav-cta {
+        hr {
+            background-color: $color-bg-light;
+            width: 100%;
+            height: 2px;
+            margin: $padding-base*2 0;
+        }
+    }
+}

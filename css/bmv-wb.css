@@ -103,7 +103,7 @@ meter {
 }
 
 .bg-dark {
-  background-color: rgb(56, 50, 44), 1;
+  background-color: rgb(56, 50, 44);
 }
 
 .bg-cta {
@@ -165,18 +165,48 @@ meter {
   transition: 0.5s ease-in-out;
 }
 
-.card {
-  overflow: hidden;
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
 }
-.card .card-inner {
-  text-decoration: none; /* Remove the underline */
-  color: inherit; /* Make the link color same as the surrounding text */
-  background-color: transparent; /* Remove any background color */
-  cursor: pointer; /* Ensure it shows as a clickable item */
-  border: none; /* Remove any borders */
-  outline: none; /* Remove focus outline */
-  padding: 0; /* Remove any padding */
-  margin: 0; /* Remove any margin */
+
+.card {
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background: #fff;
+  text-align: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.card h3 {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+}
+
+.card p {
+  font-size: 1rem;
+  margin-bottom: 15px;
+}
+
+.card a.button {
+  display: inline-block;
+  padding: 10px 15px;
+  background: #0073e6;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background 0.3s ease;
+}
+
+.card a.button:hover {
+  background: #005bb5;
 }
 
 body img.gform_ajax_spinner {
@@ -353,6 +383,43 @@ legend {
   line-height: 35px;
 }
 
+.nav-footer {
+  padding: 45px 0;
+  background-color: rgb(56, 50, 44);
+  margin-bottom: 0 !important;
+}
+.nav-footer .nav-items {
+  color: #ffffff;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 2rem;
+}
+.nav-footer .nav-items .title-wrap {
+  display: inline-block;
+  padding-bottom: 15px;
+}
+.nav-footer .nav-items .title-wrap h5 {
+  font-size: 1rem;
+}
+.nav-footer .nav-items .title-wrap hr {
+  background-color: rgb(245, 243, 240);
+  width: 75%;
+  height: 2px;
+  margin-top: 11.25px;
+}
+.nav-footer .nav-items li {
+  list-style-type: none;
+}
+.nav-footer .nav-items a {
+  color: #ffffff;
+}
+.nav-footer .nav-cta hr {
+  background-color: rgb(245, 243, 240);
+  width: 100%;
+  height: 2px;
+  margin: 30px 0;
+}
+
 .container {
   max-width: 1400px;
   padding: 0 15px;
@@ -444,12 +511,8 @@ legend {
   margin-bottom: 2rem;
 }
 
-.sec-content {
-  padding: 0 15px;
-}
-
 .header {
-  margin-top: -90px;
+  margin-top: -120px;
   height: 75vh;
   background-color: red;
 }

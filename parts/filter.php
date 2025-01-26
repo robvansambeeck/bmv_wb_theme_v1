@@ -1,5 +1,5 @@
 <div class="sec filter">
-    <div class="sec-inner">
+    <div class="sec-inner container">
         <div class="sec-content">
             <div class="filter-buttons">
                 <button class="filter-button" data-filter="vacatures">Vacatures</button>

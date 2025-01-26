@@ -35,7 +35,7 @@ function create_custom_post_type()
         'show_ui' => true,
         'show_in_menu' => true,
         'query_var' => true,
-        'rewrite' => array('slug' => 'vacature'),
+        'rewrite' => array('slug' => 'vacatures'),
         'capability_type' => 'post',
         'has_archive' => true,
         'hierarchical' => false,
@@ -45,6 +45,6 @@ function create_custom_post_type()
         'taxonomies'         => array('category'), // Enable categories
     );
 
-    register_post_type('custom_post', $args);
+    register_post_type('vacature', $args);
 }
 add_action('init', 'create_custom_post_type');
