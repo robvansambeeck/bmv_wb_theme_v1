@@ -574,8 +574,7 @@ legend {
   align-items: center;
   min-height: 70vh; /* Full viewport height for the wrapper */
 }
-
-.page-content {
+.notification-wrapper .notification-content {
   flex: 1; /* This allows the content to stretch dynamically */
   box-sizing: border-box; /* Ensure padding doesn't affect the height */
 }

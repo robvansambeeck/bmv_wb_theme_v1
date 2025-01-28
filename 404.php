@@ -14,7 +14,7 @@ Template Post Type: page
 ?>
 <?php get_header(); ?>
 <div class="notification-wrapper">
-    <div class="page-content container">
+    <div class="notification-content container">
         <?php the_content(''); ?>
     </div>
 </div>
