@@ -65,3 +65,13 @@ function filter_vacature_by_category_slug($args, $request)
   return $args;
 }
 add_filter('rest_vacature_query', 'filter_vacature_by_category_slug', 10, 2);
+
+
+// Dynamically populate the job title in Gravity Forms text field
+add_filter('gform_field_value_job_title', function ($value) {
+  // Check if we are on a single post of the 'vacature' custom post type
+  if (is_singular('vacature')) {
+    return get_the_title(); // Return the current post's title
+  }
+  return ''; // Default to an empty value if not on a single post
+});

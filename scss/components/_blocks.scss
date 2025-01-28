@@ -3,3 +3,9 @@
 @use "sass:math";
 
 // blocks generic
+.notification {
+    display: none;
+}
+.active-class {
+    display: block !important;
+}

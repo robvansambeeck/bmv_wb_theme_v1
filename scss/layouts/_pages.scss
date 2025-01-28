@@ -4,4 +4,66 @@
 
 // pages 
 
-// page generic 
+// page deafault
+
+.page-title {
+    display: block;
+    padding-bottom: $padding-base;
+    .title-wrapper {
+        display: inline-block;
+    }
+    h1{
+        font-size: 2rem;
+    }
+    hr {
+        background-color: $color-cta;
+        width: 75%;
+        height: 2px;
+        margin-top: $padding-base*0.75;
+    }
+}
+
+.page-content {
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    grid-gap: $grid-gap*4;
+    .col-cta {
+        .sidebar {
+            height: auto;
+            padding: $padding-base*2;
+            background-color: $color-bg-light;
+            border-radius: $border-radius-button;
+        }
+    }
+    strong {
+        font-weight: $font-bold;
+    }
+    ul {
+        li {
+            list-style: disc;
+            list-style-position: inside;
+        }
+    }
+}
+
+.page-meta {
+        background-color: $color-bg-light;
+        margin: $grid-gap 0;
+        .meta-location {
+            .wrapper {
+                padding-top: $padding-base*2;
+                padding-bottom: $padding-base*2;
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                grid-gap: $grid-gap;
+            }
+        }
+        .meta-form {
+            background-color: $color-cta;
+            .wrapper {
+                padding-top: $padding-base*2;
+                padding-bottom: $padding-base*2;
+            }
+       
+        }
+}

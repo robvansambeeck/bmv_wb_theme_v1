@@ -6,14 +6,12 @@
 .card {
     padding: 20px;
     border: 1px solid #ddd;
-    border-radius: 8px;
+    border-radius: $border-radius-button;
     background: #fff;
     text-align: center;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease;
-    opacity: 0;
-    transform: translateY(20px); /* Start slightly below */
-    transition: opacity 0.3s ease, transform 0.3s ease;
+
 }
 
 .card.show {
@@ -41,7 +39,7 @@
     background: #0073e6;
     color: #fff;
     text-decoration: none;
-    border-radius: 5px;
+    border-radius: $border-radius-button;
     transition: background 0.3s ease;
 }
 

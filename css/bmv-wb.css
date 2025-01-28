@@ -110,6 +110,14 @@ meter {
   background-color: rgb(183, 145, 109);
 }
 
+.notification {
+  display: none;
+}
+
+.active-class {
+  display: block !important;
+}
+
 .btn {
   max-width: 400px;
   border-radius: 8px;
@@ -175,6 +183,11 @@ meter {
   transition: transform 0.3s ease;
 }
 
+.card.show {
+  opacity: 1;
+  transform: translateY(0); /* Move back into place */
+}
+
 .card:hover {
   transform: translateY(-5px);
 }
@@ -195,7 +208,7 @@ meter {
   background: #0073e6;
   color: #fff;
   text-decoration: none;
-  border-radius: 5px;
+  border-radius: 8px;
   transition: background 0.3s ease;
 }
 
@@ -501,6 +514,61 @@ legend {
   display: block;
 }
 
+.page-title {
+  display: block;
+  padding-bottom: 15px;
+}
+.page-title .title-wrapper {
+  display: inline-block;
+}
+.page-title h1 {
+  font-size: 2rem;
+}
+.page-title hr {
+  background-color: rgb(183, 145, 109);
+  width: 75%;
+  height: 2px;
+  margin-top: 11.25px;
+}
+
+.page-content {
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  grid-gap: 8rem;
+}
+.page-content .col-cta .sidebar {
+  height: auto;
+  padding: 30px;
+  background-color: rgb(245, 243, 240);
+  border-radius: 8px;
+}
+.page-content strong {
+  font-weight: 600;
+}
+.page-content ul li {
+  list-style: disc;
+  list-style-position: inside;
+}
+
+.page-meta {
+  background-color: rgb(245, 243, 240);
+  margin: 2rem 0;
+}
+.page-meta .meta-location .wrapper {
+  padding-top: 30px;
+  padding-bottom: 30px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 2rem;
+}
+.page-meta .meta-form {
+  background-color: rgb(183, 145, 109);
+}
+.page-meta .meta-form .wrapper {
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+
 .notification-wrapper {
   display: grid;
   align-items: center;
@@ -509,7 +577,6 @@ legend {
 
 .page-content {
   flex: 1; /* This allows the content to stretch dynamically */
-  padding: 20px; /* Optional: Add padding for spacing */
   box-sizing: border-box; /* Ensure padding doesn't affect the height */
 }
 
@@ -520,7 +587,6 @@ legend {
 .header {
   margin-top: -120px;
   height: 75vh;
-  background-color: red;
 }
 
 .video-header {
@@ -536,7 +602,7 @@ legend {
   width: 100%;
   height: 100%;
   object-fit: cover; /* Ensure video fills the header area */
-  z-index: 1000;
+  z-index: 1;
 }
 
 .video-overlay {
@@ -545,7 +611,7 @@ legend {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.5); /* Semi-transparent overlay for better text readability */
+  background: rgba(255, 255, 255, 0.1); /* Semi-transparent overlay for better text readability */
   z-index: 2;
 }
 
@@ -567,6 +633,11 @@ legend {
 .header-content p {
   font-size: 1.2rem;
   margin-bottom: 20px;
+}
+
+.header-img img {
+  width: 100%;
+  height: auto;
 }
 
 /* Main Content Section */
@@ -605,12 +676,6 @@ main {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 20px;
-  opacity: 1;
-  transition: opacity 0.5s ease-in-out; /* Smooth fade effect */
-}
-
-#card-container.hidden {
-  opacity: 0; /* Fade out effect */
 }
 
 body {
