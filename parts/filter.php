@@ -4,7 +4,7 @@
             <div class="filter-buttons">
                 <button class="filter-button" data-filter="vacature">Vacatures</button>
                 <button class="filter-button" data-filter="stage">Stage / Duaal</button>
-                <button class="filter-button" data-filter="open-sollicitatie">Open sollicitatie</button>
+                <a href="/open-sollicitatie/" class="filter-button">Open sollicitatie</a>
             </div>
         </div>
     </div>

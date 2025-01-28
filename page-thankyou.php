@@ -2,7 +2,7 @@
 /*
 @package (bvm_wb_theme_v1)
 =========================
-404.php
+page-thankyou.php
 
 The 404 Not Found template. Used when WordPress cannot find a post or page that matches the query.
 =========================
@@ -14,7 +14,7 @@ Template Post Type: page
 ?>
 <?php get_header(); ?>
 <div class="notification-wrapper">
-    <div class="page-content container">
+    <div class="notification-content container">
         <?php the_content(''); ?>
     </div>
 </div>
