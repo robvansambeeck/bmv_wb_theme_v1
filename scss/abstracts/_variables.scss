@@ -9,10 +9,8 @@ $padding-base: 15px;
 $grid-gap: 2rem;
 
 //font-family
-// $font-heading: 'Open Sans', sans-serif;
-// $font-body: 'Open Sans', sans-serif;
-$font-heading:'Open Sans', sans-serif;
-$font-body: 'Open Sans', sans-serif; 
+$font-heading:"source-sans-pro", sans-serif;
+$font-body: "source-sans-pro", sans-serif; 
 
 $font-thin: 200;
 $font-regular: 400;
@@ -21,11 +19,11 @@ $font-bold: 600;
 
 // background color variables
 $color-bg-dark: rgb(56, 50, 44, 1.0); // tone of black
-$color-bg-light: rgba(245, 243, 240, 1.0); //tone of beige
+$color-bg-light: #f6f6f6; //tone of beige
 
 // cta colors
-$color-cta: rgb(183, 145, 109, 1.0); // cta
-$color-cta-hover: rgb(183, 145, 109, 1.5); // cta hover
+$color-cta: #f68b1f; // cta
+$color-cta-hover: #BD6E1E; // cta hover
 
 
 // text colors dark
@@ -33,8 +31,8 @@ $color-heading-dark: rgb(56, 50, 44), 1.0; // tone of black
 $color-txt-dark: rgb(56, 50, 44), 1.0; // tone of black
 
 // text colors light
-$color-heading-light: #ffffff; // heading white 
 $color-txt-light: #ffffff; // paragraph white
+$color-txt-light: #000000; // paragraph white
 
 //shadow
 $text-shadow: 1px 1px 1.2px $color-txt-dark;

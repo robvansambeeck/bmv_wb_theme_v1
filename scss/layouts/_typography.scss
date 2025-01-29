@@ -17,9 +17,7 @@ body {
 // headings
 h1 {
     font-family: $font-heading;
-    font-weight: $font-bold;
-    text-transform: uppercase;
-    letter-spacing: 3px;
+    font-weight: $font-medium;
     font-size: 1.5rem;
     line-height: 2.5rem;
     color: $color-heading-dark;
@@ -35,7 +33,6 @@ h1 {
 h2 {
     font-family: $font-heading;
     font-weight: $font-medium;
-    text-transform: uppercase;
     letter-spacing: 1.5px;
     font-size: 1rem;
     color: $color-heading-dark;
@@ -75,16 +72,21 @@ strong {
 // anchor tags 
 a{
     font-family: $font-body;
-    font-weight: $font-bold;
+    font-weight: $font-medium;
     line-height: 35px;
-    color: $color-cta;
+    // color: $color-cta;
     font-size: inherit;
     letter-spacing: .5px;
+    i {
+        font-size: 12px;
+        padding-left: 5px;
+    }
 }
 
 // list items
 ul {
     display: block;
+    color: $color-txt-dark !important;
 }
 
 li {

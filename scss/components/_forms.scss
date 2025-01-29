@@ -21,10 +21,10 @@ body img.gform_ajax_spinner {
 		padding-left: 0.8rem !important;
 		margin: 0 !important;
         box-shadow: $form-shadow;
+        letter-spacing: 1px !important;
+		font-size: 0.8rem !important;
+        font-style: italic !important;
 	}
-	select {
-		-webkit-appearance: listbox !important;
-		}
 	option {
 		font-style: italic !important;
 		font-weight: $font-thin !important;

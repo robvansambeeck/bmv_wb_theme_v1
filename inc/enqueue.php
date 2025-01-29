@@ -11,7 +11,7 @@ ADMIN ENQUEUE FUNCTIONS
 function bvm_wb_theme_v1_script_enqueue()
 {
     // Fonts and icons
-    wp_enqueue_style('playfair_display', 'https://fonts.googleapis.com/css?family=Playfair+Display:400,700&display=swap', array(), null, 'all');
+    wp_enqueue_style('source sanse pro', 'https://use.typekit.net/vik1sup.css', array(), null, 'all');
     // Font Awesome
     wp_enqueue_script('font_awesome', 'https://kit.fontawesome.com/de3d3e56bd.js', array(), null, false);
     // CSS

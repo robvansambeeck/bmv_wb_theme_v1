@@ -42,12 +42,13 @@ document.addEventListener("DOMContentLoaded", function () {
                                     : "https://via.placeholder.com/300"; // Fallback image if no thumbnail
 
                             return `
-                                <div class="card">
-                                    <img src="${thumbnail}" alt="${post.title.rendered}" class="card-thumbnail" />
-                                    <h3>${post.title.rendered}</h3>
-                                    <p>${post.excerpt.rendered || "No excerpt available."}</p>
-                                    <a href="${post.link}" class="button">Read More</a>
-                                </div>
+                            <div class="card">
+                            <img src="${thumbnail}" alt="${post.title.rendered}" class="card-thumbnail" />
+                            <h3>${post.title.rendered}</h3>
+                            <hr />
+                            <p>${post.excerpt.rendered || "No excerpt available."}</p>
+                            <a href="${post.link}" class="button">Vacature bekijken <i class="fa-regular fa-chevron-right"></i></a>
+                        </div>
                             `;
                         })
                         .join("");
