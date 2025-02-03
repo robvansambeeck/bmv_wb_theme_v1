@@ -20,6 +20,7 @@ $font-bold: 600;
 // background color variables
 $color-bg-dark: rgb(56, 50, 44, 1.0); // tone of black
 $color-bg-light: #f6f6f6; //tone of beige
+$color-bg-medium: #ECECEC;
 
 // cta colors
 $color-cta: #f68b1f; // cta
@@ -28,11 +29,10 @@ $color-cta-hover: #BD6E1E; // cta hover
 
 // text colors dark
 $color-heading-dark: rgb(56, 50, 44), 1.0; // tone of black
-$color-txt-dark: rgb(56, 50, 44), 1.0; // tone of black
 
 // text colors light
 $color-txt-light: #ffffff; // paragraph white
-$color-txt-light: #000000; // paragraph white
+$color-txt-dark: rgb(56, 50, 44), 1.0; // tone of black
 
 //shadow
 $text-shadow: 1px 1px 1.2px $color-txt-dark;

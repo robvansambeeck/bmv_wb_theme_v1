@@ -12,6 +12,7 @@ function bvm_wb_theme_v1_theme_setup()
 {
   add_theme_support('menus');
   register_nav_menu('main', 'Main Menu (on top)');
+  register_nav_menu('main', 'Sidebar Menu (mobiel)');
   register_nav_menu('pagina', 'Footer Menu (paginas)');
   register_nav_menu('diensten', 'Footer Menu (diensten)');
 }

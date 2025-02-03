@@ -9,8 +9,11 @@
         Your browser does not support the video tag.
     </video>
     <div class="header-content">
-        <h1>Samen bouwen aan de toekomst</h1>
-        <p>Word jij onze nieuwe collega?</p>
+        <div class="container">
+            <h1>Samen bouwen aan de toekomst</h1>
+            <p>Word jij onze nieuwe collega?</p>
+        </div>
+
     </div>
 </header>
 <!-- /header -->

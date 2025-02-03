@@ -18,6 +18,9 @@
 
 .sec {
     margin-bottom: $grid-gap;
+    @media only screen and (max-width: 768px) {
+        margin-bottom: .5rem;
+    }
 }
 
 //header
@@ -54,7 +57,6 @@
 .header-content {
     position: absolute;
     top: 50%;
- right: 50px;
     // transform: translate(-50%, -50%);
     color: #fff;
     text-align: right;
@@ -68,6 +70,10 @@
     line-height: 100px;
     text-align: right;
     text-shadow: 2px 2px 6px #363636;
+    @media only screen and (max-width: 768px) {
+        font-size: 3rem;
+        line-height: 60px;
+    }
 }
 
 .header-content p {
@@ -75,13 +81,18 @@
     line-height: 70px;
     margin-bottom: 20px;
     text-shadow: 2px 2px 6px #363636;
+    @media only screen and (max-width: 768px) {
+        font-size: 2rem;
+        line-height: 50px;
+    }
 }
 
 // header-img
 .header-img {
 img {
     width: 100%;
-    height: auto;
+    height: 100%;
+    object-fit: cover;
 }
 }
 
@@ -114,6 +125,9 @@ main {
     color: $color-cta;
     cursor: pointer;
     transition: all 0.3s ease;
+    @media only screen and (max-width: 768px) {
+        padding: 0px;
+    }
 }
 
 .filter-button:hover {
@@ -122,9 +136,18 @@ main {
 }
 
 #card-container {
-    padding: $padding-base*2 0;
+    padding: $padding-base*2 15px;
     margin-bottom: $grid-gap*2;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 20px;
+}
+
+.breadcrumbs {
+    @media only screen and (max-width: 768px) {
+       p{ 
+        line-height: 18px;
+        padding-bottom: 0px;
+       }
+    }
 }
