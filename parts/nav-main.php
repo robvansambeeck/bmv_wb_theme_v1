@@ -48,4 +48,4 @@
     </div>
 </div>
 <?php get_template_part('parts/nav-sidebar'); ?>
-<!-- /nav-main -->
+<!-- /nav-sidebar -->

@@ -90,53 +90,43 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
 
-
  //sidebar
  document.addEventListener("DOMContentLoaded", () => {
     const menuIcon = document.getElementById("menu-icon");
     const sidebar = document.getElementById("sidebar");
-
-    if (!menuIcon || !sidebar) {
-        console.error("Menu Icon or Sidebar not found!");
-        return;
-    }
-
-    // Toggle sidebar
-    menuIcon.addEventListener("click", (e) => {
-        e.stopPropagation(); // Prevent closing when clicking menu icon
+  
+    menuIcon.addEventListener("click", () => {
         menuIcon.classList.toggle("change");
         sidebar.classList.toggle("show-sidebar");
     });
-
-    // Close sidebar when clicking outside
-    setTimeout(() => {
-        document.addEventListener("click", (event) => {
-            if (!sidebar.contains(event.target) && !menuIcon.contains(event.target)) {
-                sidebar.classList.remove("show-sidebar");
-                menuIcon.classList.remove("change");
-            }
-        });
-    }, 100);
-
-    // Dropdown toggles for submenus
+  
+    // Select all menu items that have a sub-menu
     const dropdownToggles = document.querySelectorAll('.sidebar-menu .menu-item-has-children > a');
-
+  
     dropdownToggles.forEach(toggle => {
         const chevron = document.createElement('i');
         chevron.classList.add('fa-regular', 'fa-chevron-down', 'chevron');
         toggle.appendChild(chevron);
-
+  
         toggle.addEventListener('click', (e) => {
             e.preventDefault();
             const dropdownMenu = toggle.nextElementSibling;
-            if (dropdownMenu && dropdownMenu.classList.contains("sub-menu")) {
-                dropdownMenu.classList.toggle("show");
-                chevron.classList.toggle("rotate");
+            if (dropdownMenu) {
+                dropdownMenu.classList.toggle('show');
+                chevron.classList.toggle('rotate');
             }
         });
     });
-});
-
   
+    // Close sidebar when clicking outside
+    document.addEventListener("click", (event) => {
+        if (!sidebar.contains(event.target) && !menuIcon.contains(event.target)) {
+            sidebar.classList.remove("show-sidebar");
+            menuIcon.classList.remove("change");
+        }
+    });
+  });
+
+
 
 console.log("js end");

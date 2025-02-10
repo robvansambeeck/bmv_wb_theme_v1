@@ -71,140 +71,141 @@
     }
 }
 
-//nav sidebar
+//Sidebar
 .nav-sidebar {
-    display: none;
+  display: none;
 position: absolute;
-  right: 15px;
-  top: 100px;
-  z-index: $z-nav !important;
-  @media only screen and (max-width: 1200px) {
-    display: block;
-  }
+right: 15px;
+top: 100px;
+z-index: 6000;
+@media only screen and (max-width: 1200px) {
+  display: block;
+}
+
+
 }
 
 // sidebar
 .menu-icon {
-    cursor: pointer;
-    display: inline-block;
-    position: fixed;
-    right: 15px;
-    top: 25px;
-    z-index: 1000; /* Added z-index */
-  }
-  
-  .bar1, .bar2, .bar3 {
-    width: 25px;
-    height: 2px;
-    background-color: $color-bg-dark;
-    margin: 6px 0;
-    transition: 0.4s;
-  }
-  
+  cursor: pointer;
+  display: inline-block;
+  position: fixed;
+  right: 15px;
+  top: 25px;
+  z-index: 6000; /* Added z-index */
+}
+
+.bar1, .bar2, .bar3 {
+  width: 25px;
+  height: 2px;
+  background-color: $color-bg-dark;
+  margin: 6px 0;
+  transition: 0.4s;
+}
+
+.sidebar {
+  height: auto;
+  width: 50%;
+  position: fixed;
+  top: 60px;
+  right: 0;
+  padding: $padding-base * 4;
+  border-radius: 0 0 50px 50px;
+  background-color: $color-bg-dark;
+  // padding-top: $padding-base * 10;
+  transform: translateY(-120%);
+  transition: transform 1s cubic-bezier(0.22, 0.61, 0.36, 1); /* Adjusted transition time */
+}
+
+@media only screen and (max-width: 768px) {
   .sidebar {
-    height: auto;
-    width: 50%;
-    position: fixed;
-    top: 60px;
-    right: 0;
-    padding: $padding-base * 4;
-    border-radius: 0 0 50px 50px;
-    background-color: $color-bg-dark;
-    // padding-top: $padding-base * 10;
-    transform: translateY(-120%);
-    transition: transform 1s cubic-bezier(0.22, 0.61, 0.36, 1); /* Adjusted transition time */
-  }
-  
-  @media only screen and (max-width: 768px) {
-    .sidebar {
-      width: 100%;
-    }
-  }
-  
-  @media only screen and (max-width: 550px) {
-    .sidebar {
-      width: 100%;
-    }
-  }
-  
-  .sidebar-menu {
-    padding: 0;
-    a:hover {
-        text-shadow: 0px 0px 1px #fff;
-    }
-  }
-  
-  .sidebar-menu li {
-    padding: 15px 20px;
-    text-align: left;
-    list-style: none;
-  }
-  
-  .sidebar-menu li a {
-    color: white;
-    text-decoration: none;
-    display: block;
-    font-weight: 300;
-    font-size: 1rem !important;
-  }
-  
- 
-  /* Ensure dropdown menu starts hidden */
-  .sidebar-menu .sub-menu {
-    display: none;
-    flex-direction: column;
-    align-items: flex-start;
     width: 100%;
+  }
+}
+
+@media only screen and (max-width: 550px) {
+  .sidebar {
+    width: 100%;
+  }
+}
+
+.sidebar-menu {
+  padding: 0;
+  a:hover {
+      text-shadow: 0px 0px 1px #fff;
+  }
+}
+
+.sidebar-menu li {
+  padding: 15px 20px;
+  text-align: left;
+  list-style: none;
+}
+
+.sidebar-menu li a {
+  color: white;
+  text-decoration: none;
+  display: block;
+  font-weight: 300;
+  font-size: 1rem !important;
+}
+
+
+/* Ensure dropdown menu starts hidden */
+.sidebar-menu .sub-menu {
+  display: none;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
 a:hover {
-        color: $color-cta;
-        text-shadow: none;
-    }
+      color: $color-cta;
+      text-shadow: none;
   }
-  
-  .sidebar-menu .chevron {
-    margin-left: 10px;
-    transition: transform .8s;
+}
+
+.sidebar-menu .chevron {
+  margin-left: 10px;
+  transition: transform .8s;
+}
+
+/* Show dropdown menu when .show class is applied */
+.sidebar-menu .sub-menu.show {
+  display: flex;
+}
+
+.chevron.rotate {
+  transform: rotate(180deg);
+}
+
+.show-sidebar {
+  display: block;
+  transform: translateY(0);
+}
+
+.change .bar1 {
+  transform: rotate(-45deg) translate(-5px, 6px);
+  background-color: $color-txt-light;
+  transition: transform .5s linear;
+}
+
+.change .bar2 {
+  opacity: 0;
+}
+
+.change .bar3 {
+  transform: rotate(45deg) translate(-5px, -6px);
+  background-color: $color-txt-light;
+  transition: transform .5s linear;
+}
+
+@media (min-width: 768px) {
+  .menu-icon, .sidebar {
+    /* display: none; */
   }
-  
-  /* Show dropdown menu when .show class is applied */
-  .sidebar-menu .sub-menu.show {
-    display: flex;
-  }
-  
-  .chevron.rotate {
-    transform: rotate(180deg);
-  }
-  
-  .show-sidebar {
-    display: block !important;
-    transform: translateY(0);
-    transition: transform 0.5s ease-in-out;
-  }
-  
-  .change .bar1 {
-    transform: rotate(-45deg) translate(-5px, 6px);
-    background-color: $color-txt-light;
-    transition: transform .5s linear;
-  }
-  
-  .change .bar2 {
-    opacity: 0;
-  }
-  
-  .change .bar3 {
-    transform: rotate(45deg) translate(-5px, -6px);
-    background-color: $color-txt-light;
-    transition: transform .5s linear;
-  }
-  
-  @media (min-width: 768px) {
-    .menu-icon, .sidebar {
-      /* display: none; */
-    }
-  }
+}
+
 
 // nav-footer
-
 .nav-footer {
     padding: $padding-base*3 0;
     background-color: $color-bg-dark;

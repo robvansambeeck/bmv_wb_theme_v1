@@ -1,5 +1,4 @@
-<div id="nav-sidebar-overlay" class="nav-sidebar-overlay">
-</div>
+<div id="nav-sidebar-overlay" class="nav-sidebar-overlay"></div>
 
 <div class="nav-sidebar">
     <div class="menu-icon" id="menu-icon">

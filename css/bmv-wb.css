@@ -434,7 +434,7 @@ legend {
   position: absolute;
   right: 15px;
   top: 100px;
-  z-index: 5000 !important;
+  z-index: 6000;
 }
 @media only screen and (max-width: 1200px) {
   .nav-sidebar {
@@ -448,7 +448,7 @@ legend {
   position: fixed;
   right: 15px;
   top: 25px;
-  z-index: 1000; /* Added z-index */
+  z-index: 6000; /* Added z-index */
 }
 
 .bar1, .bar2, .bar3 {
@@ -530,9 +530,8 @@ legend {
 }
 
 .show-sidebar {
-  display: block !important;
+  display: block;
   transform: translateY(0);
-  transition: transform 0.5s ease-in-out;
 }
 
 .change .bar1 {
