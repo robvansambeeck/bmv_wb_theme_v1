@@ -9,7 +9,7 @@
 
     <nav class="sidebar" id="sidebar">
         <?php wp_nav_menu(array(
-            'theme_location' => 'main',
+            'theme_location' => 'Sidebar',
             'menu_class' => 'sidebar-menu'
         )); ?>
     </nav>

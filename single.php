@@ -26,8 +26,8 @@ The single post template. Used when a single post is queried. For this and all o
         <?php the_content(''); ?>
     </div>
     <div class="col col2 col-cta">
-        <div class="sidebar">
-            <?php the_field('sidebar'); ?>
+        <div class="sideitem">
+            <?php the_field('sideitem'); ?>
         </div>
     </div>
 </div>
