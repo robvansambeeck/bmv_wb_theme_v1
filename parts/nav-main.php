@@ -1,3 +1,4 @@
+<div id="overlay" class="overlay"></div>
 <div class="sec nav nav-main">
     <div class="sec-inner container">
         <div class="sec-content">
@@ -10,7 +11,13 @@
                 }
                 ?>
             </div>
-
+            <a class="menu-toggle" id="menu-toggle">
+                <div class="wrapper">
+                    <div class="bar1"></div>
+                    <div class="bar2"></div>
+                    <div class="bar3"></div>
+                </div>
+            </a>
             <div class="nav-items">
                 <?php
                 wp_nav_menu([
@@ -20,12 +27,6 @@
                 ]);
                 ?>
             </div>
-            <div class="menu-icon" id="menu-icon">
-                <div class="bar1"></div>
-                <div class="bar2"></div>
-                <div class="bar3"></div>
-            </div>
-
             <div class="nav-cta">
                 <?php
                 // Define social media platforms and icons

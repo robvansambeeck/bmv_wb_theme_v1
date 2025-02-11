@@ -84,49 +84,30 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 // button vacature single
-  document.querySelector('a[href="#solliciteer"]').addEventListener('click', function (event) {
-    event.preventDefault(); // Prevent default anchor behavior
-    document.getElementById('solliciteer').scrollIntoView({ behavior: 'smooth' });
-  });
+//   document.querySelector('a[href="#solliciteer"]').addEventListener('click', function (event) {
+//     event.preventDefault(); // Prevent default anchor behavior
+//     document.getElementById('solliciteer').scrollIntoView({ behavior: 'smooth' });
+//   });
 
 
  //sidebar
- document.addEventListener("DOMContentLoaded", () => {
-    const menuIcon = document.getElementById("menu-icon");
-    const sidebar = document.getElementById("sidebar");
-  
-    menuIcon.addEventListener("click", () => {
-        menuIcon.classList.toggle("change");
-        sidebar.classList.toggle("show-sidebar");
+ document.addEventListener('DOMContentLoaded', function() {
+    const menuToggle = document.getElementById('menu-toggle');
+    const navSidebar = document.querySelector('.nav-sidebar');
+    const navMain = document.querySelector('.nav-main');
+    
+    menuToggle.addEventListener('click', function() {
+        // Toggle the sidebar-active class immediately
+        navSidebar.classList.toggle('sidebar-active');
+        
+        // Toggle the "change" class immediately to transform the bars into a cross
+        menuToggle.classList.toggle('change');
+        
+        // Delay toggling the nav-main-white class by 1 second
+        setTimeout(function() {
+            navMain.classList.toggle('nav-main-white');
+        }, 200); 
     });
-  
-    // Select all menu items that have a sub-menu
-    const dropdownToggles = document.querySelectorAll('.sidebar-menu .menu-item-has-children > a');
-  
-    dropdownToggles.forEach(toggle => {
-        const chevron = document.createElement('i');
-        chevron.classList.add('fa-regular', 'fa-chevron-down', 'chevron');
-        toggle.appendChild(chevron);
-  
-        toggle.addEventListener('click', (e) => {
-            e.preventDefault();
-            const dropdownMenu = toggle.nextElementSibling;
-            if (dropdownMenu) {
-                dropdownMenu.classList.toggle('show');
-                chevron.classList.toggle('rotate');
-            }
-        });
-    });
-  
-    // Close sidebar when clicking outside
-    document.addEventListener("click", (event) => {
-        if (!sidebar.contains(event.target) && !menuIcon.contains(event.target)) {
-            sidebar.classList.remove("show-sidebar");
-            menuIcon.classList.remove("change");
-        }
-    });
-  });
-
-
+});
 
 console.log("js end");
