@@ -366,6 +366,9 @@ legend {
   background: rgba(250, 250, 250, 0.8); /* Semi-transparent background */
   z-index: 6001;
 }
+.nav-main .sec-inner {
+  overflow: visible;
+}
 .nav-main .sec-content {
   display: grid;
   grid-template-columns: 15% 70% 15%;
@@ -374,7 +377,6 @@ legend {
 }
 @media only screen and (max-width: 768px) {
   .nav-main .sec-content {
-    display: grid;
     grid-template-columns: 1fr 1fr;
   }
 }
@@ -400,6 +402,45 @@ legend {
 .nav-main .sec-content .nav-items ul li {
   list-style: none;
 }
+.nav-main .sec-content .nav-items ul li.menu-item-has-children {
+  position: relative;
+}
+.nav-main .sec-content .nav-items ul li.menu-item-has-children a {
+  padding-right: 2.5rem;
+  position: relative;
+}
+.nav-main .sec-content .nav-items ul li.menu-item-has-children a::after {
+  content: "\f078";
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  transition: transform 0.3s ease;
+}
+.nav-main .sec-content .nav-items ul li.menu-item-has-children.open a::after {
+  transform: translateY(-50%) rotate(180deg);
+}
+.nav-main .sec-content .nav-items ul li.menu-item-has-children .sub-menu a::after {
+  content: "";
+}
+.nav-main .sec-content .nav-items ul li.menu-item-has-children ul {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #fff;
+  min-width: 200px;
+  padding: 0;
+  margin: 0;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+}
+.nav-main .sec-content .nav-items ul li.menu-item-has-children ul li a {
+  padding: 0.5rem 1rem;
+  white-space: nowrap;
+}
 @media only screen and (max-width: 768px) {
   .nav-main .sec-content .nav-items ul {
     display: none;
@@ -421,7 +462,7 @@ legend {
 }
 .nav-main .sec-content .nav-cta i {
   line-height: 35px;
-  padding: 0px;
+  padding: 0;
 }
 @media only screen and (max-width: 768px) {
   .nav-main .sec-content .nav-cta {

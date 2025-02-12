@@ -83,13 +83,6 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
-// button vacature single
-//   document.querySelector('a[href="#solliciteer"]').addEventListener('click', function (event) {
-//     event.preventDefault(); // Prevent default anchor behavior
-//     document.getElementById('solliciteer').scrollIntoView({ behavior: 'smooth' });
-//   });
-
-
  //sidebar
  document.addEventListener('DOMContentLoaded', function() {
     const menuToggle = document.getElementById('menu-toggle');
@@ -110,4 +103,28 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
+// toggle submenu items nav-main
+document.addEventListener('DOMContentLoaded', function () {
+    // Select all parent menu items that have children
+    const parentLinks = document.querySelectorAll('.nav-items li.menu-item-has-children > a');
+  
+    parentLinks.forEach(function (link) {
+      link.addEventListener('click', function (e) {
+        // Prevent navigation if the link is used to toggle the submenu
+        e.preventDefault();
+  
+        const parentLi = this.parentElement;
+        const submenu = parentLi.querySelector('ul');
+  
+        // Toggle the "open" class
+        parentLi.classList.toggle('open');
+  
+        // Toggle submenu visibility by checking its current display state
+        if (submenu) {
+          submenu.style.display = submenu.style.display === 'block' ? 'none' : 'block';
+        }
+      });
+    });
+  });
+  
 console.log("js end");
