@@ -548,12 +548,50 @@ legend {
     display: block;
   }
 }
-.nav-sidebar ul li {
+.nav-sidebar li {
   list-style: none;
-  cursor: pointer;
+  color: #afafaf;
 }
-.nav-sidebar ul a {
-  cursor: pointer;
+.nav-sidebar li.menu-item-has-children a {
+  padding-right: 2.5rem;
+}
+.nav-sidebar li.menu-item-has-children a::after {
+  content: "\f078";
+  font-family: "Font Awesome 5 Free";
+  font-weight: 600;
+  font-size: 0.7rem;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  transition: transform 0.3s ease;
+  padding-left: 1.5rem;
+}
+.nav-sidebar li.menu-item-has-children.open a::after {
+  transform: translateY(-50%) rotate(180deg) !important;
+}
+.nav-sidebar li.menu-item-has-children .sub-menu a::after {
+  content: "";
+}
+.nav-sidebar li.menu-item-has-children ul {
+  display: none;
+  top: 100%;
+  left: 0;
+  min-width: 200px;
+  padding: 0;
+  margin: 0;
+  z-index: 1000;
+}
+.nav-sidebar li.menu-item-has-children ul li:hover {
+  color: #f68b1f !important;
+}
+.nav-sidebar li.menu-item-has-children ul li a {
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+  white-space: nowrap;
+  color: #afafaf;
+}
+.nav-sidebar li.menu-item-has-children ul li a:hover {
+  color: #f68b1f !important;
 }
 
 .sidebar-active {

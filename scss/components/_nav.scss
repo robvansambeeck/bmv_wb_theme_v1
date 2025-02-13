@@ -49,11 +49,9 @@
           // Dropdown menu styling for items with children
           &.menu-item-has-children {
             position: relative;
-
             a {
               padding-right: 2.5rem; // Extra space for the chevron
               position: relative;
-
               // Insert the chevron using a pseudo-element (Font Awesome Unicode for chevron-down)
               &::after {
                 content: "\f078";
@@ -67,7 +65,6 @@
                 transition: transform 0.3s ease;
               }
             }
-
             // Rotate chevron when submenu is open
             &.open {
               a {
@@ -206,13 +203,68 @@
     display: block;
   }
   
-  ul {
-    li {
-      list-style: none;
-      cursor: pointer;
-    }
-    a {
-      cursor: pointer;
+  li {
+    list-style: none;
+    color: #afafaf;
+    // Dropdown menu styling for items with children
+    &.menu-item-has-children {
+      a {
+        padding-right: 2.5rem; // Extra space for the chevron
+        // Insert the chevron using a pseudo-element (Font Awesome Unicode for chevron-down)
+        &::after {
+          content: "\f078";
+          font-family: "Font Awesome 5 Free"; // Ensure this matches your FA version
+          font-weight: 600; // Required for solid icons
+          font-size: .7rem;
+          right: 1rem;
+          top: 50%;
+          transform: translateY(-50%);
+          transition: transform 0.3s ease;
+          padding-left: 1.5rem;
+        }
+      }
+      // Rotate chevron when submenu is open
+      &.open {
+        a {
+          &::after {
+            transform: translateY(-50%) rotate(180deg) !important;
+          }
+        }
+      }
+      .sub-menu {
+          a {
+              &::after {
+                  content: "";
+              }
+          }
+       
+      }
+
+      // Dropdown submenu
+      ul {
+        display: none; // Hidden by default
+        top: 100%;
+        left: 0;
+        min-width: 200px;
+        padding: 0;
+        margin: 0;
+        z-index: 1000;
+
+        li {
+          &:hover {
+            color: $color-cta !important;
+          }
+          a {
+            padding: 0.5rem 1rem;
+            font-size: .9rem;
+            white-space: nowrap;
+            color: #afafaf;
+            &:hover {
+              color: $color-cta !important;
+            }
+          }
+        }
+      }
     }
   }
 }
