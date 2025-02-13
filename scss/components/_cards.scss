@@ -2,14 +2,18 @@
 @use '../base' as *;
 
 // cards
-
 .card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Ensures content is spread out */
     border-radius: $border-radius-button;
     background: $color-bg-light;
     text-align: left;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease;
     max-width: 335px;
+    height: 100%; /* Ensure all cards take full height */
+    
     @media only screen and (max-width: 768px) {
         max-width: 100%;
     }
@@ -31,28 +35,35 @@
 
 .card h3 {
     font-size: 1.2rem;
-    margin-top: 10px;
+    margin-top: 20px;
     padding: 0 2rem;
 }
 
 .card hr {
-        background-color: $color-cta;
-        width: 15%;
-        height: 2px;
-        margin-top: $padding-base*0.75;
-        margin: 5px 2rem;
+    background-color: $color-cta;
+    width: 15%;
+    height: 2px;
+    margin-top: $padding-base * 0.75;
+    margin: 5px 2rem;
 }
 
 .card p {
     font-size: 1rem;
-  padding: 0 2rem;
-  margin-bottom: 1rem;
+    padding: 0 2rem;
+    margin-bottom: 1rem;
+    flex-grow: 1; /* Allows the paragraph to expand and push the button down */
+}
+
+.card-content {
+    flex-grow: 1; /* Pushes the button down when text content is smaller */
+    display: flex;
+    flex-direction: column;
 }
 
 .card a.button {
-    display: flex; /* Use flexbox for centering */
-    justify-content: center; /* Horizontally center the text */
-    align-items: center; /* Vertically center the text */
+    display: flex;
+    justify-content: center;
+    align-items: center;
     padding: 5px 0;
     width: 80%;
     background: $color-cta;
@@ -62,8 +73,9 @@
     border-radius: $border-radius-button;
     transition: background 0.3s ease;
     margin-bottom: 2rem;
-    margin-left: auto; /* Auto margins center the button horizontally */
+    margin-left: auto;
     margin-right: auto;
+    margin-top: auto; /* Ensures it stays at the bottom */
 }
 
 .card a.button:hover {

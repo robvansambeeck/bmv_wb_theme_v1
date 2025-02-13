@@ -174,12 +174,16 @@ meter {
 }
 
 .card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Ensures content is spread out */
   border-radius: 8px;
   background: #f6f6f6;
   text-align: left;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease;
   max-width: 335px;
+  height: 100%; /* Ensure all cards take full height */
 }
 @media only screen and (max-width: 768px) {
   .card {
@@ -203,7 +207,7 @@ meter {
 
 .card h3 {
   font-size: 1.2rem;
-  margin-top: 10px;
+  margin-top: 20px;
   padding: 0 2rem;
 }
 
@@ -219,12 +223,19 @@ meter {
   font-size: 1rem;
   padding: 0 2rem;
   margin-bottom: 1rem;
+  flex-grow: 1; /* Allows the paragraph to expand and push the button down */
+}
+
+.card-content {
+  flex-grow: 1; /* Pushes the button down when text content is smaller */
+  display: flex;
+  flex-direction: column;
 }
 
 .card a.button {
-  display: flex; /* Use flexbox for centering */
-  justify-content: center; /* Horizontally center the text */
-  align-items: center; /* Vertically center the text */
+  display: flex;
+  justify-content: center;
+  align-items: center;
   padding: 5px 0;
   width: 80%;
   background: #f68b1f;
@@ -234,8 +245,9 @@ meter {
   border-radius: 8px;
   transition: background 0.3s ease;
   margin-bottom: 2rem;
-  margin-left: auto; /* Auto margins center the button horizontally */
+  margin-left: auto;
   margin-right: auto;
+  margin-top: auto; /* Ensures it stays at the bottom */
 }
 
 .card a.button:hover {
@@ -857,13 +869,9 @@ main {
   cursor: pointer;
   transition: all 0.3s ease;
 }
-@media only screen and (max-width: 768px) {
-  .filter-button {
-    padding: 0px;
-  }
-}
 
-.filter-button:hover {
+.filter-button:hover,
+.filter-button.active {
   background-color: #f68b1f;
   color: #fff;
 }

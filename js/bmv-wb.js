@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", function () {
 document.addEventListener("DOMContentLoaded", function () {
     const buttons = document.querySelectorAll(".filter-button");
     const cardContainer = document.getElementById("card-container");
-    const targetElement = document.querySelector(".notification"); // Replace with your target element
+    const targetElement = document.querySelector(".notification"); // Adjust if needed
 
     function fetchPosts(categorySlug) {
         // Show loading message
@@ -30,25 +30,23 @@ document.addEventListener("DOMContentLoaded", function () {
             .then((response) => response.json())
             .then((data) => {
                 if (data.length > 0) {
-                    // Generate HTML for each post
                     cardContainer.innerHTML = data
                         .map((post) => {
-                            // Extract the thumbnail URL
                             const thumbnail =
                                 post._embedded &&
                                 post._embedded["wp:featuredmedia"] &&
                                 post._embedded["wp:featuredmedia"][0].source_url
                                     ? post._embedded["wp:featuredmedia"][0].source_url
-                                    : "https://via.placeholder.com/300"; // Fallback image if no thumbnail
+                                    : "https://via.placeholder.com/300"; // Fallback image
 
                             return `
-                            <div class="card">
-                            <img src="${thumbnail}" alt="${post.title.rendered}" class="card-thumbnail" />
-                            <h3>${post.title.rendered}</h3>
-                            <hr />
-                            <p>${post.excerpt.rendered || "No excerpt available."}</p>
-                            <a href="${post.link}" class="button">Vacature bekijken <i class="fa-regular fa-chevron-right"></i></a>
-                        </div>
+                                <div class="card">
+                                    <img src="${thumbnail}" alt="${post.title.rendered}" class="card-thumbnail" />
+                                    <h3>${post.title.rendered}</h3>
+                                    <hr />
+                                    <p>${post.excerpt.rendered || "No excerpt available."}</p>
+                                    <a href="${post.link}" class="button">Vacature bekijken <i class="fa-regular fa-chevron-right"></i></a>
+                                </div>
                             `;
                         })
                         .join("");
@@ -62,6 +60,14 @@ document.addEventListener("DOMContentLoaded", function () {
             });
     }
 
+    // Function to update active button state
+    function updateActiveButton(clickedButton) {
+        buttons.forEach((button) => {
+            button.classList.remove("active"); // Remove active class from all buttons
+        });
+        clickedButton.classList.add("active"); // Add active class to the clicked button
+    }
+
     // Load "vacature" posts by default
     fetchPosts("vacature");
 
@@ -70,18 +76,15 @@ document.addEventListener("DOMContentLoaded", function () {
         button.addEventListener("click", function () {
             const categorySlug = this.getAttribute("data-filter");
 
-            // Check if "Stage / Duaal" button is clicked
-            if (categorySlug === "stage") {
-                targetElement.classList.add("active-class"); // Add class to the specific element
-            } else {
-                targetElement.classList.remove("active-class"); // Remove class if another button is clicked
-            }
+            // Update active button styling
+            updateActiveButton(this);
 
             // Fetch posts for the selected category
             fetchPosts(categorySlug);
         });
     });
 });
+
 
  //sidebar
  document.addEventListener('DOMContentLoaded', function() {

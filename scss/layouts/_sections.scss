@@ -125,12 +125,10 @@ main {
     color: $color-cta;
     cursor: pointer;
     transition: all 0.3s ease;
-    @media only screen and (max-width: 768px) {
-        padding: 0px;
-    }
 }
 
-.filter-button:hover {
+.filter-button:hover,
+.filter-button.active {
     background-color: $color-cta;
     color: #fff;
 }
