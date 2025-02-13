@@ -413,6 +413,7 @@ legend {
 }
 .nav-main .sec-content .nav-items ul li {
   list-style: none;
+  color: #afafaf;
 }
 .nav-main .sec-content .nav-items ul li.menu-item-has-children {
   position: relative;
@@ -424,8 +425,9 @@ legend {
 .nav-main .sec-content .nav-items ul li.menu-item-has-children a::after {
   content: "\f078";
   font-family: "Font Awesome 5 Free";
-  font-weight: 900;
+  font-weight: 600;
   position: absolute;
+  font-size: 0.7rem;
   right: 1rem;
   top: 50%;
   transform: translateY(-50%);
@@ -442,16 +444,21 @@ legend {
   position: absolute;
   top: 100%;
   left: 0;
-  background-color: #fff;
+  background-color: #f68b1f;
   min-width: 200px;
   padding: 0;
   margin: 0;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   z-index: 1000;
 }
+.nav-main .sec-content .nav-items ul li.menu-item-has-children ul li:hover {
+  background-color: #f7ba7d;
+}
 .nav-main .sec-content .nav-items ul li.menu-item-has-children ul li a {
   padding: 0.5rem 1rem;
+  font-size: 0.9rem;
   white-space: nowrap;
+  color: #fff;
 }
 @media only screen and (max-width: 768px) {
   .nav-main .sec-content .nav-items ul {
@@ -466,7 +473,7 @@ legend {
 .nav-main .sec-content .nav-cta a {
   width: 35px;
   height: 35px;
-  background-color: #f6f6f6;
+  background-color: #afafaf;
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -475,6 +482,7 @@ legend {
 .nav-main .sec-content .nav-cta i {
   line-height: 35px;
   padding: 0;
+  color: #fff;
 }
 @media only screen and (max-width: 768px) {
   .nav-main .sec-content .nav-cta {
@@ -868,6 +876,11 @@ main {
   color: #f68b1f;
   cursor: pointer;
   transition: all 0.3s ease;
+}
+@media only screen and (max-width: 768px) {
+  .filter-button {
+    padding: 0px !important;
+  }
 }
 
 .filter-button:hover,

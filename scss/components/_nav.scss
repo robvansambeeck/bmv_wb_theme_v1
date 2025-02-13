@@ -45,7 +45,7 @@
 
         li {
           list-style: none;
-
+          color: #afafaf;
           // Dropdown menu styling for items with children
           &.menu-item-has-children {
             position: relative;
@@ -58,8 +58,9 @@
               &::after {
                 content: "\f078";
                 font-family: "Font Awesome 5 Free"; // Ensure this matches your FA version
-                font-weight: 900; // Required for solid icons
+                font-weight: 600; // Required for solid icons
                 position: absolute;
+                font-size: .7rem;
                 right: 1rem;
                 top: 50%;
                 transform: translateY(-50%);
@@ -90,7 +91,7 @@
               position: absolute;
               top: 100%;
               left: 0;
-              background-color: #fff;
+              background-color: $color-cta;
               min-width: 200px;
               padding: 0;
               margin: 0;
@@ -98,9 +99,14 @@
               z-index: 1000;
 
               li {
+                &:hover {
+                  background-color: #f7ba7d;
+                }
                 a {
                   padding: 0.5rem 1rem;
+                  font-size: .9rem;
                   white-space: nowrap;
+                  color: #fff;
                 }
               }
             }
@@ -121,7 +127,7 @@
       a {
         width: 35px;
         height: 35px;
-        background-color: $color-bg-light;
+        background-color: #afafaf;
         border-radius: 50%;
         display: flex;
         align-items: center;
@@ -131,6 +137,7 @@
       i {
         line-height: 35px;
         padding: 0;
+        color: #fff;
       }
 
       @media only screen and (max-width: 768px) {
