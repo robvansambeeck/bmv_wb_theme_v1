@@ -129,5 +129,30 @@ document.addEventListener('DOMContentLoaded', function () {
       });
     });
   });
-  
+
+  //google maps
+  (function($) {
+    function initMap() {
+        $('.acf-map').each(function() {
+            var mapElement = $(this);
+            var lat = parseFloat(mapElement.data('lat'));
+            var lng = parseFloat(mapElement.data('lng'));
+
+            var map = new google.maps.Map(mapElement[0], {
+                center: { lat: lat, lng: lng },
+                zoom: 14
+            });
+
+            new google.maps.Marker({
+                position: { lat: lat, lng: lng },
+                map: map
+            });
+        });
+    }
+
+    $(document).ready(initMap);
+})(jQuery);
+
+
+
 console.log("js end");
