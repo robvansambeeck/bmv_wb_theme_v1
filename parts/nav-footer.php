@@ -35,6 +35,9 @@
             </div>
             <div class="nav-cta">
                 <hr>
+                <p>
+                    © Copyright 2025 BMV – Bouwers met Visie | <a href="https://www.bmv.nl/algemene-voorwaarden/" target="_blank">Algemene voorwaarden</a>
+                </p>
             </div>
         </div>
     </div>

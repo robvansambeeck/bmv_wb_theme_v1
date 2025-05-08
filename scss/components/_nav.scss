@@ -305,8 +305,12 @@
         hr {
             background-color: $color-bg-light;
             width: 100%;
-            height: 2px;
-            margin: $padding-base*2 0;
+            height: 1px;
+            margin-top: $padding-base*3;
+        }
+        p{
+          color: $color-txt-light;
+          font-size: 0.8rem;
         }
     }
 }
