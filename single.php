@@ -38,30 +38,33 @@ The single post template. Used when a single post is queried. For this and all o
                 <?php the_field('locatie_info'); ?>
             </div>
             <div class="col2">
-                <?php
-                $location = get_field('location_map');
-                if ($location): ?>
-                    <div id="map" style="height: 400px; width: 100%;"></div>
-                    <script>
-                        function initMap() {
-                            var location = {
-                                lat: <?php echo esc_js($location['lat']); ?>,
-                                lng: <?php echo esc_js($location['lng']); ?>
-                            };
-                            var map = new google.maps.Map(document.getElementById('map'), {
-                                zoom: 14,
-                                center: location
+                <div class="col2">
+                    <?php
+                    $location = get_field('locatie_map'); // Your ACF field for the map
+                    if ($location): ?>
+                        <div id="map" style="height: 400px; width: 100%;"></div>
+                        <script>
+                            function initMap() {
+                                var location = {
+                                    lat: <?php echo esc_js($location['lat']); ?>,
+                                    lng: <?php echo esc_js($location['lng']); ?>
+                                };
+                                var map = new google.maps.Map(document.getElementById('map'), {
+                                    zoom: 14,
+                                    center: location
+                                });
+                                var marker = new google.maps.Marker({
+                                    position: location,
+                                    map: map
+                                });
+                            }
+                            document.addEventListener("DOMContentLoaded", function() {
+                                initMap();
                             });
-                            var marker = new google.maps.Marker({
-                                position: location,
-                                map: map
-                            });
-                        }
-                        document.addEventListener("DOMContentLoaded", function() {
-                            initMap();
-                        });
-                    </script>
-                <?php endif; ?>
+                        </script>
+                    <?php endif; ?>
+                </div>
+
 
             </div>
         </div>
@@ -90,6 +93,8 @@ The single post template. Used when a single post is queried. For this and all o
         </div>
     </div>
 </div>
+
+
 
 <?php get_footer(); ?>
 <!-- /page (default page template) -->

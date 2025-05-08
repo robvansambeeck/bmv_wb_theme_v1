@@ -130,21 +130,21 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });
 
-  //google maps
+  //Google map
   (function($) {
     function initMap() {
         $('.acf-map').each(function() {
-            var mapElement = $(this);
-            var lat = parseFloat(mapElement.data('lat'));
-            var lng = parseFloat(mapElement.data('lng'));
+            var mapEl = $(this);
+            var lat = parseFloat(mapEl.find('.marker').data('lat'));
+            var lng = parseFloat(mapEl.find('.marker').data('lng'));
 
-            var map = new google.maps.Map(mapElement[0], {
-                center: { lat: lat, lng: lng },
+            var map = new google.maps.Map(mapEl[0], {
+                center: {lat: lat, lng: lng},
                 zoom: 14
             });
 
             new google.maps.Marker({
-                position: { lat: lat, lng: lng },
+                position: {lat: lat, lng: lng},
                 map: map
             });
         });
