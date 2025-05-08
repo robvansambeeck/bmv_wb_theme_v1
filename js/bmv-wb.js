@@ -25,7 +25,7 @@ document.addEventListener("DOMContentLoaded", function () {
         cardContainer.innerHTML = '<p>Loading...</p>';
 
         // Fetch posts using the REST API
-        const apiUrl = `/wp-json/wp/v2/vacature?category_slug=${categorySlug}&_embed`;
+        const apiUrl = `/wp-json/wp/v2/vacature?category_slug=${categorySlug}&_embed&per_page=100`;
         fetch(apiUrl)
             .then((response) => response.json())
             .then((data) => {
