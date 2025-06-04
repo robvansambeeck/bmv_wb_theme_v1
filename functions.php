@@ -12,6 +12,9 @@ require get_template_directory() . '/inc/theme-support.php';
 require get_template_directory() . '/inc/custom-post-type.php';
 require get_template_directory() . '/inc/blocks.php';
 
+add_theme_support('title-tag');
+
+
 // API Google maps
 // function enqueue_google_maps()
 // {
