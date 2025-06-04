@@ -129,30 +129,4 @@ document.addEventListener('DOMContentLoaded', function () {
       });
     });
   });
-
-  //Google map
-  (function($) {
-    function initMap() {
-        $('.acf-map').each(function() {
-            var mapEl = $(this);
-            var lat = parseFloat(mapEl.find('.marker').data('lat'));
-            var lng = parseFloat(mapEl.find('.marker').data('lng'));
-
-            var map = new google.maps.Map(mapEl[0], {
-                center: {lat: lat, lng: lng},
-                zoom: 14
-            });
-
-            new google.maps.Marker({
-                position: {lat: lat, lng: lng},
-                map: map
-            });
-        });
-    }
-
-    $(document).ready(initMap);
-})(jQuery);
-
-
-
 console.log("js end");

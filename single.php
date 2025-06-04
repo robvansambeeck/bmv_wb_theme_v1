@@ -38,32 +38,37 @@ The single post template. Used when a single post is queried. For this and all o
                 <?php the_field('locatie_info'); ?>
             </div>
             <div class="col2">
-                <div class="col2">
-                    <?php
-                    $location = get_field('locatie_map'); // Your ACF field for the map
-                    if ($location): ?>
-                        <div id="map" style="height: 400px; width: 100%;"></div>
-                        <script>
-                            function initMap() {
-                                var location = {
-                                    lat: <?php echo esc_js($location['lat']); ?>,
-                                    lng: <?php echo esc_js($location['lng']); ?>
-                                };
-                                var map = new google.maps.Map(document.getElementById('map'), {
-                                    zoom: 14,
-                                    center: location
-                                });
-                                var marker = new google.maps.Marker({
-                                    position: location,
-                                    map: map
-                                });
-                            }
-                            document.addEventListener("DOMContentLoaded", function() {
-                                initMap();
-                            });
-                        </script>
-                    <?php endif; ?>
-                </div>
+
+                <?php
+                $location = get_field('locatie_map'); // ACF Google Map field with lat & lng
+                if ($location): ?>
+                    <div id="map" style="height: 400px; width: 100%;"></div>
+
+                    <link
+                        rel="stylesheet"
+                        href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+                        integrity="sha256-sA+9J8vfd5Rftk2a2Ujv1n1Mb7Z9I7yZ+GeRkM7r4oA="
+                        crossorigin="" />
+                    <script
+                        src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+                        integrity="sha256-o9N1jpp5Bj5R1LVWJ3gFhEM+Nuqv5QcfBcm2C3B9VtY="
+                        crossorigin=""></script>
+
+                    <script>
+                        document.addEventListener("DOMContentLoaded", function() {
+                            var lat = <?php echo esc_js($location['lat']); ?>;
+                            var lng = <?php echo esc_js($location['lng']); ?>;
+
+                            var map = L.map('map').setView([lat, lng], 14);
+
+                            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                                attribution: '&copy; <a href="https://openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                            }).addTo(map);
+
+                            L.marker([lat, lng]).addTo(map);
+                        });
+                    </script>
+                <?php endif; ?>
 
 
             </div>
