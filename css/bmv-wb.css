@@ -770,7 +770,6 @@ legend {
   margin: 2rem 0 0 0;
 }
 .page-meta .meta-location .wrapper {
-  padding: 60px 15px;
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-gap: 2rem;
@@ -778,6 +777,18 @@ legend {
 @media only screen and (max-width: 768px) {
   .page-meta .meta-location .wrapper {
     display: block;
+  }
+}
+.page-meta .meta-location .col1 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 45px;
+  padding-left: 10%;
+}
+@media only screen and (max-width: 768px) {
+  .page-meta .meta-location .col1 {
+    padding: 5rem 15px 15px 15px;
   }
 }
 .page-meta .meta-form {

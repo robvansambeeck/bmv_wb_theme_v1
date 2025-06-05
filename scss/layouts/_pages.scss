@@ -55,12 +55,21 @@
         margin: $grid-gap 0 0 0;
         .meta-location {
             .wrapper {
-          padding: $padding-base*4 15px;
                 display: grid;
                 grid-template-columns: 1fr 1fr;
                 grid-gap: $grid-gap;
                 @media only screen and (max-width: 768px) {
                     display: block;
+                    }
+            }
+            .col1 {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                padding: $padding-base*3;
+                padding-left: 10%;
+                @media only screen and (max-width: 768px) {
+                    padding: 5rem $padding-base $padding-base $padding-base;
                     }
             }
         }   

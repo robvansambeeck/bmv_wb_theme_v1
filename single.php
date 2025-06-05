@@ -33,22 +33,16 @@ The single post template. Used when a single post is queried. For this and all o
 </div>
 <div class="page-meta ">
     <div class="meta-location">
-        <div class="wrapper container">
+        <div class="wrapper">
             <div class="col1">
                 <?php the_field('locatie_info'); ?>
             </div>
-            <div class="col2">
-                <iframe
-                    src="https://maps.app.goo.gl/zZT45yM4zoNkpKnM7"
-                    width="600"
-                    height="450"
-                    style="border:0;"
-                    allowfullscreen=""
-                    loading="lazy">
-                </iframe>
+            <div class="acf-map" style="height: 450px; width: 100%;">
+                <div class="marker" data-lat="51.420523" data-lng="5.406208"></div>
             </div>
         </div>
     </div>
+
     <div class="meta-form">
         <div class="wrapper container">
             <div class="sec-content">
