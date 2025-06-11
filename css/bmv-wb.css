@@ -387,7 +387,7 @@ legend {
   align-items: center;
   padding: 0.5rem 0;
 }
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 992px) {
   .nav-main .sec-content {
     grid-template-columns: 1fr 1fr;
   }
@@ -460,7 +460,7 @@ legend {
   white-space: nowrap;
   color: #fff;
 }
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 992px) {
   .nav-main .sec-content .nav-items ul {
     display: none;
   }
@@ -484,7 +484,7 @@ legend {
   padding: 0;
   color: #fff;
 }
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 992px) {
   .nav-main .sec-content .nav-cta {
     display: none;
   }
@@ -508,7 +508,7 @@ legend {
   margin: 6px 0;
   transition: 0.4s;
 }
-@media (min-width: 768px) {
+@media (min-width: 992px) {
   .menu-toggle {
     display: none;
   }
@@ -749,7 +749,7 @@ legend {
   grid-template-columns: 3fr 1fr;
   grid-gap: 8rem;
 }
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 992px) {
   .page-content {
     display: block;
   }
@@ -761,7 +761,7 @@ legend {
   border-radius: 8px;
   text-align: left;
 }
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 992px) {
   .page-content .col-cta .sideitem {
     margin-top: 3rem;
   }
@@ -902,6 +902,11 @@ legend {
   text-align: right;
   z-index: 3;
   width: 100%;
+}
+@media only screen and (max-width: 1100px) {
+  .header-content {
+    top: 40%;
+  }
 }
 @media only screen and (max-width: 450px) {
   .header-content {

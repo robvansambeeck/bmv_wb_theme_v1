@@ -27,7 +27,7 @@
     display: grid;
     grid-template-columns: 3fr 1fr;
     grid-gap: $grid-gap*4;
-    @media only screen and (max-width: 768px) {
+    @media only screen and (max-width: 992px) {
     display: block;
     }
     .col-cta {
@@ -37,7 +37,7 @@
             background-color: $color-bg-light;
             border-radius: $border-radius-button;
             text-align: left;
-            @media only screen and (max-width: 768px) {
+            @media only screen and (max-width: 992px) {
               margin-top: 3rem;
               }
         }
