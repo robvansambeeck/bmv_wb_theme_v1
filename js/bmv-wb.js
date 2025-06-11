@@ -130,35 +130,4 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });
 
-  (function($) {
-    function initMap($el) {
-        var $marker = $el.find('.marker');
-
-        var lat = parseFloat($marker.attr('data-lat'));
-        var lng = parseFloat($marker.attr('data-lng'));
-
-        var map = new google.maps.Map($el[0], {
-            zoom: 16,
-            center: { lat: lat, lng: lng },
-            mapTypeId: google.maps.MapTypeId.ROADMAP
-        });
-
-        new google.maps.Marker({
-            position: { lat: lat, lng: lng },
-            map: map,
-            title: "Heiberg 10"
-        });
-    }
-
-    function initMaps() {
-        $('.acf-map').each(function() {
-            initMap($(this));
-        });
-    }
-
-    $(document).ready(function() {
-        initMaps();
-    });
-})(jQuery);
-
 console.log("js end");

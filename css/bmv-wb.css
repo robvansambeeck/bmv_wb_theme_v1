@@ -723,6 +723,10 @@ legend {
   display: block;
 }
 
+.gform-theme--foundation .gform-grid-row {
+  row-gap: 40px !important;
+}
+
 .page-title {
   display: block;
   padding-bottom: 15px;
@@ -773,10 +777,12 @@ legend {
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-gap: 2rem;
+  height: 100%;
 }
 @media only screen and (max-width: 768px) {
   .page-meta .meta-location .wrapper {
     display: block;
+    height: auto;
   }
 }
 .page-meta .meta-location .col1 {
@@ -791,6 +797,32 @@ legend {
     padding: 5rem 15px 15px 15px;
   }
 }
+.page-meta .meta-location .col2 {
+  position: relative;
+  height: 100%;
+  padding: 0;
+}
+.page-meta .meta-location .col2 iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  display: block;
+  min-height: 400px;
+}
+@media only screen and (max-width: 768px) {
+  .page-meta .meta-location .col2 {
+    position: static;
+  }
+  .page-meta .meta-location .col2 iframe {
+    position: static;
+    width: 100%;
+    height: auto;
+    min-height: 400px;
+  }
+}
 .page-meta .meta-form {
   background-color: #f6f6f6;
 }
@@ -801,6 +833,7 @@ legend {
 .page-meta .meta-form h2 {
   margin: 2rem 0;
   font-size: 1.8rem;
+  text-align: left;
 }
 
 .page-opensollicitatie .sec-content {
@@ -864,6 +897,11 @@ legend {
   text-align: right;
   z-index: 3;
   width: 100%;
+}
+@media only screen and (max-width: 450px) {
+  .header-content {
+    top: 40%;
+  }
 }
 
 .header-content h1 {
@@ -985,6 +1023,7 @@ h2 {
   letter-spacing: 1.5px;
   font-size: 1rem;
   color: rgb(56, 50, 44), 1;
+  line-height: 38px;
 }
 @media only screen and (max-width: 768px) {
   h2 {
