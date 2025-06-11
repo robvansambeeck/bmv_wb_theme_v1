@@ -37,9 +37,6 @@ h2 {
     font-size: 1rem;
     color: $color-heading-dark;
     line-height: 38px;
-    @media only screen and (max-width: 768px) {
-        font-size: .8rem;
-    }
 }
 
 h3 {

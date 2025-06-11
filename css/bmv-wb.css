@@ -761,6 +761,11 @@ legend {
   border-radius: 8px;
   text-align: left;
 }
+@media only screen and (max-width: 768px) {
+  .page-content .col-cta .sideitem {
+    margin-top: 3rem;
+  }
+}
 .page-content strong {
   font-weight: 600;
 }
@@ -1024,11 +1029,6 @@ h2 {
   font-size: 1rem;
   color: rgb(56, 50, 44), 1;
   line-height: 38px;
-}
-@media only screen and (max-width: 768px) {
-  h2 {
-    font-size: 0.8rem;
-  }
 }
 
 h3 {

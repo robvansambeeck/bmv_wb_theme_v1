@@ -37,6 +37,9 @@
             background-color: $color-bg-light;
             border-radius: $border-radius-button;
             text-align: left;
+            @media only screen and (max-width: 768px) {
+              margin-top: 3rem;
+              }
         }
     }
     strong {
