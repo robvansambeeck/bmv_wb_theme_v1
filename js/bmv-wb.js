@@ -30,6 +30,13 @@ document.addEventListener("DOMContentLoaded", function () {
             .then((response) => response.json())
             .then((data) => {
                 if (data.length > 0) {
+                    // 🔽 Sort alphabetically by post title
+                    data.sort((a, b) => {
+                        const titleA = a.title.rendered.toLowerCase();
+                        const titleB = b.title.rendered.toLowerCase();
+                        return titleA.localeCompare(titleB);
+                    });
+
                     cardContainer.innerHTML = data
                         .map((post) => {
                             const thumbnail =
