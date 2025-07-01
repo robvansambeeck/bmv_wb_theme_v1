@@ -232,7 +232,7 @@ meter {
   flex-direction: column;
 }
 
-.card a.button {
+.card div.button {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -250,7 +250,7 @@ meter {
   margin-top: auto; /* Ensures it stays at the bottom */
 }
 
-.card a.button:hover {
+.card div.button:hover {
   background: #BD6E1E;
 }
 
