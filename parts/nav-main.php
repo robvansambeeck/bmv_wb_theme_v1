@@ -32,7 +32,7 @@
                 // Define social media platforms and icons
                 $socials = [
                     'facebook_url' => 'fab fa-facebook-f',
-                    'twitter_url' => 'fab fa-twitter',
+                    // 'twitter_url' => 'fab fa-twitter',
                     'instagram_url' => 'fab fa-instagram',
                     'linkedin_url' => 'fab fa-linkedin-in',
                 ];
