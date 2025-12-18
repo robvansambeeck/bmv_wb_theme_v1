@@ -27,7 +27,7 @@
     display: grid;
     grid-template-columns: 3fr 1fr;
     grid-gap: $grid-gap*4;
-    @media only screen and (max-width: 768px) {
+    @media only screen and (max-width: 992px) {
     display: block;
     }
     .col-cta {
@@ -37,6 +37,9 @@
             background-color: $color-bg-light;
             border-radius: $border-radius-button;
             text-align: left;
+            @media only screen and (max-width: 992px) {
+              margin-top: 3rem;
+              }
         }
     }
     strong {
@@ -51,32 +54,78 @@
 }
 
 .page-meta {
-        background-color: $color-bg-medium;
-        margin: $grid-gap 0 0 0;
-        .meta-location {
-            .wrapper {
-          padding: $padding-base*4 15px;
-                display: grid;
-                grid-template-columns: 1fr 1fr;
-                grid-gap: $grid-gap;
-                @media only screen and (max-width: 768px) {
-                    display: block;
-                    }
-            }
-        }   
-        .meta-form {
-            background-color: $color-bg-light;
-            .wrapper {
-                padding-top: $padding-base*2;
-                padding-bottom: 
-                $padding-base*2;
-            }
-       h2 {
+    background-color: $color-bg-medium;
+    margin: $grid-gap 0 0 0;
+  
+    .meta-location {
+      .wrapper {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-gap: $grid-gap;
+        height: 100%; // Ensure full height for iframe
+        @media only screen and (max-width: 768px) {
+          display: block;
+          height: auto;
+        }
+      }
+  
+      .col1 {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: $padding-base * 3;
+        padding-left: 10%;
+  
+        @media only screen and (max-width: 768px) {
+          padding: 5rem $padding-base $padding-base $padding-base;
+        }
+      }
+  
+      .col2 {
+        position: relative;
+        height: 100%;
+        padding: 0;
+  
+        iframe {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          border: 0;
+          display: block;
+          min-height: 400px; // fallback height for small screens
+        }
+  
+        @media only screen and (max-width: 768px) {
+          position: static;
+  
+          iframe {
+            position: static;
+            width: 100%;
+            height: auto;
+            min-height: 400px;
+          }
+        }
+      }
+    }
+  
+    .meta-form {
+      background-color: $color-bg-light;
+  
+      .wrapper {
+        padding-top: $padding-base * 2;
+        padding-bottom: $padding-base * 2;
+      }
+  
+      h2 {
         margin: 2rem 0;
         font-size: 1.8rem;
-       }
-        }
-}
+        text-align: left;
+      }
+    }
+  }
+  
 
 .page-opensollicitatie {
    .sec-content {

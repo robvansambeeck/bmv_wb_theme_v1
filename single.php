@@ -33,39 +33,16 @@ The single post template. Used when a single post is queried. For this and all o
 </div>
 <div class="page-meta ">
     <div class="meta-location">
-        <div class="wrapper container">
+        <div class="wrapper">
             <div class="col1">
                 <?php the_field('locatie_info'); ?>
             </div>
             <div class="col2">
-                <?php
-                $location = get_field('location_map');
-                if ($location): ?>
-                    <div id="map" style="height: 400px; width: 100%;"></div>
-                    <script>
-                        function initMap() {
-                            var location = {
-                                lat: <?php echo esc_js($location['lat']); ?>,
-                                lng: <?php echo esc_js($location['lng']); ?>
-                            };
-                            var map = new google.maps.Map(document.getElementById('map'), {
-                                zoom: 14,
-                                center: location
-                            });
-                            var marker = new google.maps.Marker({
-                                position: location,
-                                map: map
-                            });
-                        }
-                        document.addEventListener("DOMContentLoaded", function() {
-                            initMap();
-                        });
-                    </script>
-                <?php endif; ?>
-
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4978.329167546027!2d5.396654277450315!3d51.40003051854031!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c6da0d38812abd%3A0x4a0b633edaafefe5!2sHeiberg%2010%2C%205504%20PB%20Veldhoven!5e0!3m2!1snl!2snl!4v1749106471784!5m2!1snl!2snl" width="1100" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
             </div>
         </div>
     </div>
+
     <div class="meta-form">
         <div class="wrapper container">
             <div class="sec-content">
@@ -90,6 +67,8 @@ The single post template. Used when a single post is queried. For this and all o
         </div>
     </div>
 </div>
+
+
 
 <?php get_footer(); ?>
 <!-- /page (default page template) -->

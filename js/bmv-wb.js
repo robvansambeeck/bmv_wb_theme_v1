@@ -25,11 +25,18 @@ document.addEventListener("DOMContentLoaded", function () {
         cardContainer.innerHTML = '<p>Loading...</p>';
 
         // Fetch posts using the REST API
-        const apiUrl = `/wp-json/wp/v2/vacature?category_slug=${categorySlug}&_embed`;
+        const apiUrl = `/wp-json/wp/v2/vacature?category_slug=${categorySlug}&_embed&per_page=100`;
         fetch(apiUrl)
             .then((response) => response.json())
             .then((data) => {
                 if (data.length > 0) {
+                    // 🔽 Sort alphabetically by post title
+                    data.sort((a, b) => {
+                        const titleA = a.title.rendered.toLowerCase();
+                        const titleB = b.title.rendered.toLowerCase();
+                        return titleA.localeCompare(titleB);
+                    });
+
                     cardContainer.innerHTML = data
                         .map((post) => {
                             const thumbnail =
@@ -40,13 +47,14 @@ document.addEventListener("DOMContentLoaded", function () {
                                     : "https://via.placeholder.com/300"; // Fallback image
 
                             return `
-                                <div class="card">
-                                    <img src="${thumbnail}" alt="${post.title.rendered}" class="card-thumbnail" />
-                                    <h3>${post.title.rendered}</h3>
-                                    <hr />
-                                    <p>${post.excerpt.rendered || "No excerpt available."}</p>
-                                    <a href="${post.link}" class="button">Vacature bekijken <i class="fa-regular fa-chevron-right"></i></a>
-                                </div>
+                            <a href="${post.link}" class="card card-link">
+                            <img src="${thumbnail}" alt="${post.title.rendered}" class="card-thumbnail" />
+                            <h3>${post.title.rendered}</h3>
+                            <hr/>
+                            <p>${post.excerpt.rendered || "No excerpt available."}</p>
+                            <div class="button">Vacature bekijken <i class="fa-regular fa-chevron-right"></i></div>
+                            </a>
+
                             `;
                         })
                         .join("");
@@ -129,30 +137,5 @@ document.addEventListener('DOMContentLoaded', function () {
       });
     });
   });
-
-  //google maps
-  (function($) {
-    function initMap() {
-        $('.acf-map').each(function() {
-            var mapElement = $(this);
-            var lat = parseFloat(mapElement.data('lat'));
-            var lng = parseFloat(mapElement.data('lng'));
-
-            var map = new google.maps.Map(mapElement[0], {
-                center: { lat: lat, lng: lng },
-                zoom: 14
-            });
-
-            new google.maps.Marker({
-                position: { lat: lat, lng: lng },
-                map: map
-            });
-        });
-    }
-
-    $(document).ready(initMap);
-})(jQuery);
-
-
 
 console.log("js end");

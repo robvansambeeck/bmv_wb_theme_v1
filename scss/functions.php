@@ -12,9 +12,6 @@ require get_template_directory() . '/inc/theme-support.php';
 require get_template_directory() . '/inc/custom-post-type.php';
 require get_template_directory() . '/inc/blocks.php';
 
-add_theme_support('title-tag');
-
-
 // API Google maps
 // function enqueue_google_maps()
 // {
@@ -22,6 +19,16 @@ add_theme_support('title-tag');
 // }
 // add_action('wp_enqueue_scripts', 'enqueue_google_maps');
 
+//google maps ACF
+function my_custom_scripts()
+{
+    wp_enqueue_script('google-maps', 'https://maps.googleapis.com/maps/api/js?key=AIzaSyBJSrOfzqB4RHBVV3wHiw5Qh_b0HXVvDus&async&defer', null, null, true);
+    wp_enqueue_script('custom-map', get_template_directory_uri() . '/js/bmv-wb.js', array('google-maps', 'jquery'), null, true); // Ensure google-maps is a dependency
+}
+add_action('wp_enqueue_scripts', 'my_custom_scripts');
+
+
+// end google maps
 
 function enqueue_jquery()
 {
