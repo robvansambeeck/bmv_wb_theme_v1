@@ -1,155 +1,133 @@
 ////////////////////////
 /// (bvm_wb_theme_v1) js
-/// ////////////////////
+////////////////////////
 
-console.log("js start");
+console.log('js start');
 
-// Lazyload video sources
-document.addEventListener("DOMContentLoaded", function () {
-    const videoSources = document.querySelectorAll("video source");
-    videoSources.forEach(source => {
-        source.src = source.dataset.src; // Set the src attribute from data-src
-    });
-    const video = document.querySelector("video");
-    video.load(); // Load the video after sources are set
-});
-
-// filter via rest api
-document.addEventListener("DOMContentLoaded", function () {
-    const buttons = document.querySelectorAll(".filter-button");
-    const cardContainer = document.getElementById("card-container");
-    const targetElement = document.querySelector(".notification"); // Adjust if needed
-
-    function fetchPosts(categorySlug) {
-        // Show loading message
-        cardContainer.innerHTML = '<p>Loading...</p>';
-
-        // Fetch posts using the REST API
-        const apiUrl = `/wp-json/wp/v2/vacature?category_slug=${categorySlug}&_embed&per_page=100`;
-        fetch(apiUrl)
-            .then((response) => response.json())
-            .then((data) => {
-                if (data.length > 0) {
-                    // 🔽 Sort alphabetically by post title
-                    data.sort((a, b) => {
-                        const titleA = a.title.rendered.toLowerCase();
-                        const titleB = b.title.rendered.toLowerCase();
-                        return titleA.localeCompare(titleB);
-                    });
-
-                    cardContainer.innerHTML = data
-                        .map((post) => {
-                            const thumbnail =
-                                post._embedded &&
-                                post._embedded["wp:featuredmedia"] &&
-                                post._embedded["wp:featuredmedia"][0].source_url
-                                    ? post._embedded["wp:featuredmedia"][0].source_url
-                                    : "https://via.placeholder.com/300"; // Fallback image
-
-                            return `
-                            <a href="${post.link}" class="card card-link">
-                            <img src="${thumbnail}" alt="${post.title.rendered}" class="card-thumbnail" />
-                            <h3>${post.title.rendered}</h3>
-                            <hr/>
-                            <p>${post.excerpt.rendered || "No excerpt available."}</p>
-                            <div class="button">Vacature bekijken <i class="fa-regular fa-chevron-right"></i></div>
-                            </a>
-
-                            `;
-                        })
-                        .join("");
-                } else {
-                    cardContainer.innerHTML = "<p>No posts found for this category.</p>";
-                }
-            })
-            .catch((error) => {
-                console.error("Error fetching posts:", error);
-                cardContainer.innerHTML = "<p>Something went wrong. Please try again later.</p>";
-            });
-    }
-
-    // Function to update active button state
-    function updateActiveButton(clickedButton) {
-        buttons.forEach((button) => {
-            button.classList.remove("active"); // Remove active class from all buttons
-        });
-        clickedButton.classList.add("active"); // Add active class to the clicked button
-    }
-
-    // Load "vacature" posts by default
-    fetchPosts("vacature");
-
-    // Add click event listeners to buttons
-    buttons.forEach((button) => {
-        button.addEventListener("click", function () {
-            const categorySlug = this.getAttribute("data-filter");
-
-            // Update active button styling
-            updateActiveButton(this);
-
-            // Fetch posts for the selected category
-            fetchPosts(categorySlug);
-        });
-    });
-});
-
-
- //sidebar
- document.addEventListener('DOMContentLoaded', function() {
-    const menuToggle = document.getElementById('menu-toggle');
-    const navSidebar = document.querySelector('.nav-sidebar');
-    const navMain = document.querySelector('.nav-main');
-    
-    menuToggle.addEventListener('click', function() {
-        // Toggle the sidebar-active class immediately
-        navSidebar.classList.toggle('sidebar-active');
-        
-        // Toggle the "change" class immediately to transform the bars into a cross
-        menuToggle.classList.toggle('change');
-        
-        // Delay toggling the nav-main-white class by 1 second
-        setTimeout(function() {
-            navMain.classList.toggle('nav-main-white');
-        }, 200); 
-    });
-});
-
-// toggle submenu items nav-main
 document.addEventListener('DOMContentLoaded', function () {
-  const parentItems = document.querySelectorAll('.nav-items li.menu-item-has-children');
 
-  parentItems.forEach(function (item) {
+  // =========================
+  // Lazyload video sources
+  // =========================
+  const video = document.querySelector('video');
+  if (video) {
+    const sources = video.querySelectorAll('source[data-src]');
+    sources.forEach(source => {
+      source.src = source.dataset.src;
+    });
+    video.load();
+  }
+
+  // =========================
+  // Filter vacatures via REST API
+  // =========================
+  const buttons = document.querySelectorAll('.filter-button');
+  const cardContainer = document.getElementById('card-container');
+
+  function fetchPosts(categorySlug) {
+    if (!cardContainer) return;
+
+    cardContainer.innerHTML = '<p>Loading...</p>';
+
+    fetch(`/wp-json/wp/v2/vacature?category_slug=${categorySlug}&_embed&per_page=100`)
+      .then(res => res.json())
+      .then(data => {
+        if (!Array.isArray(data) || !data.length) {
+          cardContainer.innerHTML = '<p>No posts found.</p>';
+          return;
+        }
+
+        data.sort((a, b) =>
+          a.title.rendered.localeCompare(b.title.rendered, 'nl', { sensitivity: 'base' })
+        );
+
+        cardContainer.innerHTML = data.map(post => {
+          const thumb =
+            post._embedded?.['wp:featuredmedia']?.[0]?.source_url ??
+            'https://via.placeholder.com/300';
+
+          return `
+            <a href="${post.link}" class="card card-link">
+              <img src="${thumb}" alt="${post.title.rendered}">
+              <h3>${post.title.rendered}</h3>
+              <hr>
+              <p>${post.excerpt.rendered || ''}</p>
+              <div class="button">
+                Vacature bekijken <i class="fa-regular fa-chevron-right"></i>
+              </div>
+            </a>
+          `;
+        }).join('');
+      })
+      .catch(() => {
+        cardContainer.innerHTML = '<p>Er ging iets mis.</p>';
+      });
+  }
+
+  if (buttons.length && cardContainer) {
+    fetchPosts('vacature');
+
+    buttons.forEach(btn => {
+      btn.addEventListener('click', function () {
+        buttons.forEach(b => b.classList.remove('active'));
+        this.classList.add('active');
+        fetchPosts(this.dataset.filter);
+      });
+    });
+  }
+
+  // =========================
+  // Hamburger / sidebar toggle
+  // =========================
+  const menuToggle = document.querySelector('#menu-toggle, .menu-toggle');
+  const navSidebar = document.querySelector('.nav-sidebar');
+  const navMain = document.querySelector('.nav-main');
+
+  if (menuToggle && navSidebar && navMain) {
+    menuToggle.addEventListener('click', function () {
+      navSidebar.classList.toggle('sidebar-active');
+      menuToggle.classList.toggle('change');
+
+      setTimeout(() => {
+        navMain.classList.toggle('nav-main-white');
+      }, 200);
+    });
+  }
+
+  // =========================
+  // Desktop nav submenu
+  // hover (desktop) + click (touch)
+  // =========================
+  const desktopItems = document.querySelectorAll('.nav-items li.menu-item-has-children');
+
+  desktopItems.forEach(item => {
     const link = item.querySelector(':scope > a');
     const submenu = item.querySelector(':scope > ul');
+    if (!link || !submenu) return;
 
-    if (!submenu || !link) return;
-
-    // helper: sluit alle andere submenu’s
     function closeOthers() {
-      parentItems.forEach(function (other) {
+      desktopItems.forEach(other => {
         if (other !== item) {
           other.classList.remove('open');
-          const otherSub = other.querySelector(':scope > ul');
-          if (otherSub) otherSub.style.display = 'none';
+          const sub = other.querySelector(':scope > ul');
+          if (sub) sub.style.display = 'none';
         }
       });
     }
 
-    // CLICK (mobiel / touch)
-    link.addEventListener('click', function (e) {
+    // touch click
+    link.addEventListener('click', e => {
       if (window.matchMedia('(hover: none)').matches) {
         e.preventDefault();
-
         const isOpen = item.classList.contains('open');
         closeOthers();
-
         item.classList.toggle('open', !isOpen);
         submenu.style.display = !isOpen ? 'block' : 'none';
       }
     });
 
-    // HOVER (desktop)
-    item.addEventListener('mouseenter', function () {
+    // hover desktop
+    item.addEventListener('mouseenter', () => {
       if (window.matchMedia('(hover: hover)').matches) {
         closeOthers();
         item.classList.add('open');
@@ -157,16 +135,67 @@ document.addEventListener('DOMContentLoaded', function () {
       }
     });
 
-    item.addEventListener('mouseleave', function () {
+    item.addEventListener('mouseleave', () => {
       if (window.matchMedia('(hover: hover)').matches) {
         item.classList.remove('open');
         submenu.style.display = 'none';
       }
     });
   });
+
+  // =========================
+  // Sidebar submenu (click-only) + chevron rotate in JS
+  // =========================
+  const sidebarItems = document.querySelectorAll('.nav-sidebar li.menu-item-has-children');
+
+  sidebarItems.forEach(item => {
+  const link = item.querySelector(':scope > a');
+  const submenu = item.querySelector(':scope > ul');
+  if (!link || !submenu) return;
+
+  // Voeg chevron span toe (1x)
+  let chevron = link.querySelector(':scope > .js-chevron');
+  if (!chevron) {
+    chevron = document.createElement('span');
+    chevron.className = 'js-chevron';
+    chevron.setAttribute('aria-hidden', 'true');
+    link.appendChild(chevron);
+  }
+
+  // Init state (BELANGRIJK: translate + rotate)
+  chevron.style.transform = 'translateY(-50%) rotate(0deg)';
+
+  link.addEventListener('click', e => {
+    e.preventDefault();
+
+    // accordion: sluit andere open submenu’s
+    sidebarItems.forEach(other => {
+      if (other !== item) {
+        other.classList.remove('open');
+
+        const otherSub = other.querySelector(':scope > ul');
+        if (otherSub) otherSub.style.display = 'none';
+
+        const otherChevron = other.querySelector(':scope > a > .js-chevron');
+        if (otherChevron) {
+          otherChevron.style.transform = 'translateY(-50%) rotate(0deg)';
+        }
+      }
+    });
+
+    const isOpen = item.classList.contains('open');
+
+    item.classList.toggle('open', !isOpen);
+    submenu.style.display = !isOpen ? 'block' : 'none';
+
+    // Toggle chevron (OOK hier: translate + rotate)
+    chevron.style.transform = !isOpen
+      ? 'translateY(-50%) rotate(180deg)'
+      : 'translateY(-50%) rotate(0deg)';
+  });
 });
 
 
+});
 
-
-console.log("js end");
+console.log('js end');

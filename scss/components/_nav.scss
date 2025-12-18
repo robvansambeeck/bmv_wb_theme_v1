@@ -198,79 +198,81 @@
   position: fixed;
   top: 0;
   left: 0;
-  padding: $padding-base*3 $padding-base;
+  padding: $padding-base * 3 $padding-base;
   padding-top: 160px;
-  display: none; /* default hidden */
-  margin-left: -100%; /* start off-screen */
   height: 100%;
   width: 100%;
-  overflow: hidden;
+
   background-color: #fff;
-  z-index: 6000; /* Added z-index */
-  
-  // Add transition for smooth slide-in effect
+  overflow: hidden;
+
+  margin-left: -100%;
+  display: none;
+  z-index: 6000;
+
   transition: margin-left 0.3s ease-in-out;
-  
-  @media only screen and (max-width: 1200px) {
+
+  @media (max-width: 1200px) {
     display: block;
   }
-  
+
   li {
     list-style: none;
     color: #afafaf;
-    // Dropdown menu styling for items with children
-    &.menu-item-has-children {
-      a {
-        padding-right: 2.5rem; // Extra space for the chevron
-        // Insert the chevron using a pseudo-element (Font Awesome Unicode for chevron-down)
-        &::after {
-          content: "\f078";
-          font-family: "Font Awesome 5 Free"; // Ensure this matches your FA version
-          font-weight: 600; // Required for solid icons
-          font-size: .7rem;
-          right: 1rem;
-          top: 50%;
-          transform: translateY(-50%) !important;
-          transition: transform 0.3s ease;
-          padding-left: 1.5rem;
-        }
+  }
+
+  /* =========================
+     ITEMS MET SUBMENU
+     ========================= */
+  li.menu-item-has-children {
+
+    /* parent link */
+    > a {
+      position: relative;
+      display: block;
+      padding: 0.75rem 3rem 0.75rem 0;
+
+      /* CHEVRON */
+      &::after {
+        content: "\f078";
+        font-family: "Font Awesome 5 Free";
+        font-weight: 900; // SOLID
+        font-size: 0.75rem;
+
+        position: absolute;
+        right: 1rem;
+        top: 50%;
+
+        display: inline-block;
+        line-height: 1;
+
+        transform: translateY(-50%) rotate(0deg) !important;
+        transition: transform 0.25s ease;
       }
-      // Rotate chevron when submenu is open
-      &.open {
+    }
+
+    /* ROTATE WHEN OPEN */
+    &.open > a::after {
+      transform: translateY(-50%) rotate(180deg) !important;
+    }
+
+    /* =========================
+       SUBMENU
+       ========================= */
+    > ul {
+      display: none;
+      margin: 0;
+      padding: 0 0 0.5rem 0;
+
+      li {
         a {
-          &::after {
-            transform: translateY(-50%) rotate(180deg) !important;
-          }
-        }
-      }
-      .sub-menu {
-          a {
-              &::after {
-                  content: "";
-              }
-          }
-       
-      }
+          display: block;
+          padding: 0.5rem 0;
+          font-size: 0.9rem;
+          color: #afafaf;
 
-      // Dropdown submenu
-      ul {
-        display: none; // Hidden by default
-        top: 100%;
-        left: 0;
-        min-width: 200px;
-        padding: 0;
-        margin: 0;
-        z-index: 1000;
-
-        li {
-          a {
-            padding: 0.5rem 1rem;
-            font-size: .9rem;
-            white-space: nowrap;
-            color: #afafaf;
-            &:hover {
-              color: $color-cta !important;
-            }
+          &:hover {
+            color: $color-cta !important;
           }
         }
       }
@@ -278,9 +280,113 @@
   }
 }
 
-.sidebar-active {
-  margin-left: 0; /* brings sidebar into view */
+/* Sidebar zichtbaar */
+// =========================
+// SIDEBAR NAV (MOBILE)
+// =========================
+
+.nav-sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 100%;
+
+  padding: $padding-base * 3 $padding-base;
+  padding-top: 160px;
+
+  background-color: #fff;
+  overflow-y: auto;
+
+  margin-left: -100%;
+  display: none;
+  z-index: 6000;
+
+  pointer-events: none;
+  transition: margin-left 0.3s ease-in-out;
+
+  @media (max-width: 1200px) {
+    display: block;
+  }
+
+  // -------------------------
+  // LIST ITEMS
+  // -------------------------
+  li {
+    list-style: none;
+    color: #afafaf;
+  }
+
+  // -------------------------
+  // ITEMS MET SUBMENU
+  // -------------------------
+  li.menu-item-has-children {
+
+    > a {
+      position: relative;
+      display: block;
+      padding: 0.75rem 3rem 0.75rem 0;
+      color: #afafaf;
+      text-decoration: none;
+    }
+
+    // Chevron die door JS wordt geroteerd
+    > a .js-chevron {
+      position: absolute;
+      right: 1rem;
+      top: 50%;
+
+      width: 18px;
+      height: 18px;
+
+      transform: translateY(-50%) rotate(0deg);
+      transition: transform 0.25s ease;
+      pointer-events: none; // klik blijft op <a>
+
+      &::before {
+        content: "\f078";
+        font-family: "Font Awesome 5 Free";
+        font-weight: 900;
+        font-size: 0.75rem;
+        line-height: 1;
+        display: inline-block;
+      }
+    }
+
+    // -------------------------
+    // SUBMENU
+    // -------------------------
+    > ul {
+      display: none; // JS zet block/none
+      margin: 0;
+      padding: 0 0 0.5rem 0;
+
+      li {
+        a {
+          display: block;
+          padding: 0.5rem 0;
+          font-size: 0.9rem;
+          color: #afafaf;
+          text-decoration: none;
+
+          &:hover {
+            color: $color-cta;
+          }
+        }
+      }
+    }
+  }
 }
+
+// =========================
+// SIDEBAR ACTIEF
+// =========================
+.sidebar-active {
+  margin-left: 0;
+  pointer-events: auto;
+}
+
 
 
 // nav-footer
