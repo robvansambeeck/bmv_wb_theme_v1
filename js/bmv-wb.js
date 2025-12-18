@@ -116,26 +116,40 @@ document.addEventListener("DOMContentLoaded", function () {
 
 // toggle submenu items nav-main
 document.addEventListener('DOMContentLoaded', function () {
-    // Select all parent menu items that have children
-    const parentLinks = document.querySelectorAll('.nav-items li.menu-item-has-children > a');
-  
-    parentLinks.forEach(function (link) {
-      link.addEventListener('click', function (e) {
-        // Prevent navigation if the link is used to toggle the submenu
+  const parentItems = document.querySelectorAll('.nav-items li.menu-item-has-children');
+
+  parentItems.forEach(function (item) {
+    const link = item.querySelector(':scope > a');
+    const submenu = item.querySelector(':scope > ul');
+
+    if (!submenu || !link) return;
+
+    // CLICK (voor mobiel / fallback)
+    link.addEventListener('click', function (e) {
+      // Alleen click afvangen op touch / kleine schermen
+      if (window.matchMedia('(hover: none)').matches) {
         e.preventDefault();
-  
-        const parentLi = this.parentElement;
-        const submenu = parentLi.querySelector('ul');
-  
-        // Toggle the "open" class
-        parentLi.classList.toggle('open');
-  
-        // Toggle submenu visibility by checking its current display state
-        if (submenu) {
-          submenu.style.display = submenu.style.display === 'block' ? 'none' : 'block';
-        }
-      });
+        item.classList.toggle('open');
+        submenu.style.display = item.classList.contains('open') ? 'block' : 'none';
+      }
+    });
+
+    // HOVER (voor desktop)
+    item.addEventListener('mouseenter', function () {
+      if (window.matchMedia('(hover: hover)').matches) {
+        item.classList.add('open');
+        submenu.style.display = 'block';
+      }
+    });
+
+    item.addEventListener('mouseleave', function () {
+      if (window.matchMedia('(hover: hover)').matches) {
+        item.classList.remove('open');
+        submenu.style.display = 'none';
+      }
     });
   });
+});
+
 
 console.log("js end");
