@@ -594,6 +594,31 @@ legend {
 .sidebar-active {
   margin-left: 0; /* brings sidebar into view */
 }
+.sidebar-active .nav-cta {
+  display: flex !important;
+  justify-content: flex-start;
+  grid-gap: 1rem;
+  padding: 15px 0;
+}
+.sidebar-active .nav-cta a {
+  width: 35px;
+  height: 35px;
+  background-color: #afafaf;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.sidebar-active .nav-cta i {
+  line-height: 35px;
+  padding: 0;
+  color: #fff;
+}
+@media only screen and (max-width: 992px) {
+  .sidebar-active .nav-cta {
+    display: none;
+  }
+}
 
 .nav-footer {
   padding: 45px 0;
