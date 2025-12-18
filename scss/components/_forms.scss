@@ -116,3 +116,9 @@ legend, {
     color: $color-cta; /* Color of the checkmark */
     font-size: 30px; /* Size of the checkmark */
 }
+
+// required field weg qua melding bovenaan
+.gform_required_legend,
+.gform_required_legend span {
+    display: none !important;
+}

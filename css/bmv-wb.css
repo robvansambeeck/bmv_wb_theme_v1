@@ -371,6 +371,11 @@ legend {
   font-size: 30px; /* Size of the checkmark */
 }
 
+.gform_required_legend,
+.gform_required_legend span {
+  display: none !important;
+}
+
 .nav-main {
   position: sticky; /* Allows it to overlay the video section */
   top: 0;
