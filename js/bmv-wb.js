@@ -147,6 +147,54 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 // sidebar toggle 
+document.addEventListener('DOMContentLoaded', function () {
+  // =========================
+  // 1) Hamburger -> sidebar open/dicht
+  // =========================
+  const menuToggle = document.querySelector('#menu-toggle, .menu-toggle');
+  const navSidebar = document.querySelector('.nav-sidebar');
+
+  if (menuToggle && navSidebar) {
+    menuToggle.addEventListener('click', function () {
+      navSidebar.classList.toggle('sidebar-active');
+      menuToggle.classList.toggle('change'); // als je die animatie gebruikt
+    });
+  }
+
+  // =========================
+  // 2) Sidebar submenu toggle (click-only)
+  // =========================
+  const parentLinks = document.querySelectorAll(
+    '.nav-sidebar li.menu-item-has-children > a'
+  );
+
+  parentLinks.forEach(function (link) {
+    const li = link.parentElement;
+    const submenu = li.querySelector(':scope > ul');
+
+    if (!submenu) return;
+
+    link.addEventListener('click', function (e) {
+      e.preventDefault();
+
+      // accordion: sluit andere submenu’s
+      document
+        .querySelectorAll('.nav-sidebar li.menu-item-has-children.open')
+        .forEach(function (openLi) {
+          if (openLi !== li) {
+            openLi.classList.remove('open');
+            const openSub = openLi.querySelector(':scope > ul');
+            if (openSub) openSub.style.display = 'none';
+          }
+        });
+
+      // toggle huidige
+      const isOpen = li.classList.contains('open');
+      li.classList.toggle('open', !isOpen);
+      submenu.style.display = !isOpen ? 'block' : 'none';
+    });
+  });
+});
 
 
 
