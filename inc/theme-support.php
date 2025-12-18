@@ -76,3 +76,24 @@ add_filter('gform_field_value_job_title', function ($value) {
   }
   return ''; // Default to an empty value if not on a single post
 });
+
+
+// yoast breadcrumbs
+
+add_filter('wpseo_breadcrumb_links', function ($links) {
+
+  if (is_singular('vacature')) {
+    return [
+      [
+        'url'  => home_url('/'),
+        'text' => 'Home',
+      ],
+      [
+        'url'  => '',
+        'text' => get_the_title(),
+      ],
+    ];
+  }
+
+  return $links;
+});
